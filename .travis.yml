@@ -1,0 +1,19 @@
+language: java
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+deploy:
+  provider: releases
+  api_key:
+    secure: R+tJR8uZdvXNO8Y6SA6AMdWRMb/RJnVPjiZxIxj0Ba9zAvXzhNydV+Vp+WU+uoWDs/PDjkEVIACl168+v4cz6uS1PvI4ol+ujqI3dqLdlvJUEPaIoijpMEDEFPyCuQ+W1Ijmnv8AeivgTMRMgtSMRk4mF68xomGgZPhYlZevBlkV8imHDk9m/cfVfvH8eLeNwtSiu8HEDgKy0JtUCKmmS4iXZf6PQtCENI5C/VcGmtwhYsci+b5YCKA2OrlnWbRyc8jyZepnXx/aFEX0SGysRZAdeFG3N5UeYT6E/fW/nu4x2KXk8V855OBFX7KT0iJwwDNIw/MWdrGdzvOrc7ol3F7FCBv007Q3FnBF/O63T0QrjwWnJTfMIsc18/ygQLSvzzlWMPbCgUc6pBdtU/ftrr1dK/aZXqoFbmdc/oXDzQS+MJPYj69qDCpjfKPUYtVhn2bYGjVz9mLobrPKvXekim1sMUce7DS0V54WgYY0Fg0RSDDsnvejuZngfSGicRmJ9TZYQixJRDpY7bPlKq4eW+CZ+wbkAlxowlZu2ExTQN0cnk9NgSTwoLc6EicsCPSrZ/KC8/U1w3LVQuORZ3I/R/EF52NoaQLez1THKQ7w6RdvVfeV9ALU3qn4B5BqURZ30keU3OXs6S07CJgUSjeRYlnZrLQ+NMtzMqIK6yeHDh0=
+  skip_cleanup: true
+  file_glob: true
+  file: build/libs/*
+  on:
+    repo: breadoliveoilsalt/echo-server
+    all_branches: true
+    tags: true
