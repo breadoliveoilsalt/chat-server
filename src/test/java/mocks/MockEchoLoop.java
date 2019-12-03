@@ -1,8 +1,8 @@
 package mocks;
 
-import echoServer.interfaces.ClientProtocol;
-import echoServer.interfaces.Reader;
-import echoServer.interfaces.Writer;
+import chatServer.interfaces.ClientProtocol;
+import chatServer.interfaces.Reader;
+import chatServer.interfaces.Writer;
 
 public class MockEchoLoop implements ClientProtocol {
 

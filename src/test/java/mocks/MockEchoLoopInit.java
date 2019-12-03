@@ -1,6 +1,6 @@
 package mocks;
 
-import echoServer.interfaces.ClientProtocol;
+import chatServer.interfaces.ClientProtocol;
 
 public class MockEchoLoopInit implements Runnable, ClientProtocol {
 

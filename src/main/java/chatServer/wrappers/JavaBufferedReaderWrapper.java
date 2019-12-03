@@ -1,6 +1,6 @@
-package echoServer.wrappers;
+package chatServer.wrappers;
 
-import echoServer.interfaces.Reader;
+import chatServer.interfaces.Reader;
 
 import java.io.BufferedReader;
 import java.io.IOException;

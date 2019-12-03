@@ -1,4 +1,4 @@
-package echoServer.interfaces;
+package chatServer.interfaces;
 
 public interface Writer {
 

@@ -1,6 +1,6 @@
-package echoServer.wrappers;
+package chatServer.wrappers;
 
-import echoServer.interfaces.Sokket;
+import chatServer.interfaces.Sokket;
 
 import java.io.*;
 import java.net.Socket;

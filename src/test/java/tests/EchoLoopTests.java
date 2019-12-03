@@ -1,6 +1,6 @@
 package tests;
 
-import echoServer.logic.EchoLoop;
+import chatServer.logic.EchoLoop;
 import mocks.MockReader;
 import mocks.MockWriter;
 import org.junit.Before;

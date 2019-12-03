@@ -1,6 +1,6 @@
-package echoServer.logic;
+package chatServer.logic;
 
-import echoServer.interfaces.*;
+import chatServer.interfaces.*;
 
 import java.io.IOException;
 

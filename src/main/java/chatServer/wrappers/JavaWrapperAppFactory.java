@@ -1,9 +1,9 @@
-package echoServer.wrappers;
+package chatServer.wrappers;
 
-import echoServer.interfaces.*;
-import echoServer.logic.EchoLoop;
-import echoServer.logic.EchoLoopClientWelcome;
-import echoServer.logic.EchoLoopInit;
+import chatServer.interfaces.*;
+import chatServer.logic.EchoLoop;
+import chatServer.logic.EchoLoopClientWelcome;
+import chatServer.logic.EchoLoopInit;
 
 import java.io.IOException;
 import java.io.InputStream;

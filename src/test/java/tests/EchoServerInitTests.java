@@ -1,6 +1,6 @@
 package tests;
 
-import echoServer.logic.EchoServerInit;
+import chatServer.logic.EchoServerInit;
 import mocks.MockAppFactory;
 import mocks.MockServerSokket;
 import mocks.MockServerSokketProtocol;

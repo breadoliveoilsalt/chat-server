@@ -1,8 +1,8 @@
-import echoServer.interfaces.AppFactory;
-import echoServer.interfaces.ServerSokketProtocol;
-import echoServer.logic.EchoServerInit;
-import echoServer.logic.EchoServerListeningLoop;
-import echoServer.wrappers.JavaWrapperAppFactory;
+import chatServer.interfaces.AppFactory;
+import chatServer.interfaces.ServerSokketProtocol;
+import chatServer.logic.EchoServerInit;
+import chatServer.logic.EchoServerListeningLoop;
+import chatServer.wrappers.JavaWrapperAppFactory;
 
 import java.io.IOException;
 

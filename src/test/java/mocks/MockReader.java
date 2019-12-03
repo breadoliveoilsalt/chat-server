@@ -1,6 +1,6 @@
 package mocks;
 
-import echoServer.interfaces.Reader;
+import chatServer.interfaces.Reader;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package tests;
 
-import echoServer.interfaces.ServerSokketProtocol;
-import echoServer.interfaces.Sokket;
-import echoServer.logic.EchoServerListeningLoop;
+import chatServer.interfaces.ServerSokketProtocol;
+import chatServer.interfaces.Sokket;
+import chatServer.logic.EchoServerListeningLoop;
 import mocks.*;
 
 import org.junit.Before;

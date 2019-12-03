@@ -1,7 +1,7 @@
-package echoServer.logic;
+package chatServer.logic;
 
-import echoServer.interfaces.ClientProtocol;
-import echoServer.interfaces.Writer;
+import chatServer.interfaces.ClientProtocol;
+import chatServer.interfaces.Writer;
 
 public class EchoLoopClientWelcome implements ClientProtocol {
 
