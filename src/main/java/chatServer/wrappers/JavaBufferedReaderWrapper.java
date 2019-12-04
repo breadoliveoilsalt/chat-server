@@ -11,7 +11,7 @@ public class JavaBufferedReaderWrapper implements Reader {
 
     private final BufferedReader reader;
 
-    JavaBufferedReaderWrapper(InputStream inputStream) {
+    public JavaBufferedReaderWrapper(InputStream inputStream) {
         reader = new BufferedReader(new InputStreamReader(inputStream));
     }
 

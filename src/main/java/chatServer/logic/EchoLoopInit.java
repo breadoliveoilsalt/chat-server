@@ -39,12 +39,12 @@ public class EchoLoopInit implements Runnable, ClientProtocol {
     }
 
     private void welcomeClient() throws IOException {
-        ClientProtocol welcomer = factory.createWelcome(writer);
-        welcomer.run();
+        ClientProtocol welcomer = factory.createWelcome(writer); // pass reader too
+        welcomer.run(); // name = welcomer.getClientName
     }
 
     private void runEchoLoop() throws IOException {
-        ClientProtocol echoLoop = factory.createEchoLoop(reader, writer);
+        ClientProtocol echoLoop = factory.createEchoLoop(reader, writer); // pass name
         echoLoop.run();
     }
 

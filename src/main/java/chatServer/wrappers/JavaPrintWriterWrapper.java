@@ -9,7 +9,7 @@ public class JavaPrintWriterWrapper implements Writer {
 
     private final PrintWriter writer;
 
-    JavaPrintWriterWrapper(OutputStream outputStream) {
+    public JavaPrintWriterWrapper(OutputStream outputStream) {
         writer = new PrintWriter(outputStream, true);
     }
 

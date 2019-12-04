@@ -1,17 +1,13 @@
-package chatServer.wrappers;
+package chatServer.logic;
 
 import chatServer.interfaces.*;
-import chatServer.logic.ChatServerListeningLoop;
-import chatServer.logic.EchoLoop;
-import chatServer.logic.EchoLoopClientWelcome;
-import chatServer.logic.EchoLoopInit;
+import chatServer.wrappers.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
-public class JavaWrapperAppFactory implements AppFactory {
+public class ChatServerAppFactory implements AppFactory {
 
     public JavaServerSocketWrapper createServerSokketListeningAtPort(int port) throws IOException {
         return new JavaServerSocketWrapper(port);
@@ -25,7 +21,7 @@ public class JavaWrapperAppFactory implements AppFactory {
         return new JavaPrintWriterWrapper(outputStream);
     }
 
-    public Runnable createEchoLoopInit(Sokket connectedSokket, AppFactory factory) {
+    public Runnable createEchoLoopInit(Sokket connectedSokket, chatServer.interfaces.AppFactory factory) {
         return new EchoLoopInit(connectedSokket, factory);
     }
 
@@ -41,7 +37,6 @@ public class JavaWrapperAppFactory implements AppFactory {
         return new Thread(runnable);
     }
 
-    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) {
-        return new ChatServerListeningLoop(serverSokket, factory);
+    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, factory);
     }
 }

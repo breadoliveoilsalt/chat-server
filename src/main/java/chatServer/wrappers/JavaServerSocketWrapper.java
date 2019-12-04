@@ -10,7 +10,7 @@ public class JavaServerSocketWrapper implements ServerSokket {
 
     private ServerSocket serverSocket;
 
-    JavaServerSocketWrapper(int port) throws IOException {
+    public JavaServerSocketWrapper(int port) throws IOException {
         serverSocket = new ServerSocket(port);
     }
 
