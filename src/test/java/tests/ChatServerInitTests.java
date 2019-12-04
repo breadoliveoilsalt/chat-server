@@ -1,7 +1,9 @@
 package tests;
 
-import chatServer.logic.EchoServerInit;
+import chatServer.logic.ChatServerInit;
+import chatServer.logic.ChatServerListeningLoop;
 import mocks.MockAppFactory;
+import mocks.MockChatServerListeningLoop;
 import mocks.MockServerSokket;
 import mocks.MockServerSokketProtocol;
 import org.junit.Before;
@@ -12,18 +14,18 @@ import java.io.IOException;
 
 public class ChatServerInitTests {
 
-    private MockServerSokketProtocol serverListeningLoop;
+    private MockChatServerListeningLoop serverListeningLoop;
     private MockServerSokket serverSokket;
     private MockAppFactory factory;
-    private EchoServerInit chatServer;
+    private ChatServerInit chatServer;
 
     @Before
     public void testInit() {
-        serverListeningLoop = new MockChatServerListeningLoop();
         serverSokket = new MockServerSokket();
+        serverListeningLoop = new MockChatServerListeningLoop(serverSokket, factory);
         factory = new MockAppFactory()
             .setServerSokketToReturn(serverSokket)
-            .setServerListeningLopoToReturn(serverListeningLoop);
+            .setChatServerListeningLoopToReturn(serverListeningLoop);
         int samplePort = 8000;
         chatServer = new ChatServerInit(samplePort, factory);
     }
@@ -38,7 +40,7 @@ public class ChatServerInitTests {
     }
 
     @Test
-    public void testStartInstantiatesAChatServerListentingLoop() {
+    public void testStartInstantiatesAChatServerListentingLoop() throws IOException {
         assertEquals(0, factory.getCallCountForCreateChatServerListeningLoop());
 
         chatServer.start();

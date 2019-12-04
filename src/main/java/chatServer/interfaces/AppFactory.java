@@ -1,5 +1,7 @@
 package chatServer.interfaces;
 
+import chatServer.logic.ChatServerListeningLoop;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,5 +21,7 @@ public interface AppFactory {
     ClientProtocol createEchoLoop(Reader reader, Writer writer);
 
     Thread createThreadFor(Runnable runnable);
+
+    ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory);
 
 }

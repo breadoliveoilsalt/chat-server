@@ -1,6 +1,7 @@
 package chatServer.wrappers;
 
 import chatServer.interfaces.*;
+import chatServer.logic.ChatServerListeningLoop;
 import chatServer.logic.EchoLoop;
 import chatServer.logic.EchoLoopClientWelcome;
 import chatServer.logic.EchoLoopInit;
@@ -38,5 +39,9 @@ public class JavaWrapperAppFactory implements AppFactory {
 
     public Thread createThreadFor(Runnable runnable) {
         return new Thread(runnable);
+    }
+
+    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) {
+        return new ChatServerListeningLoop(serverSokket, factory);
     }
 }

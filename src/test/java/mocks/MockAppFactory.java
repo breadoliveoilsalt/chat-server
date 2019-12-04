@@ -1,6 +1,7 @@
 package mocks;
 
 import chatServer.interfaces.*;
+import chatServer.logic.ChatServerListeningLoop;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -77,6 +78,17 @@ public class MockAppFactory implements AppFactory {
         return callCountForCreateEchoLoop;
     }
 
+    private ChatServerListeningLoop chatServerListeningLoop;
+    public MockAppFactory setChatServerListeningLoopToReturn(ChatServerListeningLoop chatServerListeningLoop) {
+        this.chatServerListeningLoop = chatServerListeningLoop;
+        return this;
+    }
+    private int callCountForCreateChatServerListeningLoop = 0;
+    public int getCallCountForCreateChatServerListeningLoop() {
+        return callCountForCreateChatServerListeningLoop;
+    }
+
+
     @Override
     public ServerSokket createServerSokketListeningAtPort(int port) {
         callCountForCreateServerSokket += 1;
@@ -119,4 +131,9 @@ public class MockAppFactory implements AppFactory {
         return thread;
     }
 
+    @Override
+    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) {
+        callCountForCreateChatServerListeningLoop += 1;
+        return chatServerListeningLoop;
+    }
 }
