@@ -1,6 +1,8 @@
 package mocks;
 
-import echoServer.interfaces.*;
+import chatServer.interfaces.*;
+import chatServer.logic.ChatServerListeningLoop;
+import chatServer.logic.EchoLoopClientWelcome;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -57,8 +59,8 @@ public class MockAppFactory implements AppFactory {
         return callCountForCreateWriter;
     }
 
-    private ClientProtocol welcomer;
-    public MockAppFactory setWelcomerToReturn(ClientProtocol welcomer) {
+    private EchoLoopClientWelcome welcomer;
+    public MockAppFactory setWelcomerToReturn(EchoLoopClientWelcome welcomer) {
         this.welcomer = welcomer;
         return this;
     }
@@ -76,6 +78,17 @@ public class MockAppFactory implements AppFactory {
     public int getCallCountForCreateEchoLoop() {
         return callCountForCreateEchoLoop;
     }
+
+    private ChatServerListeningLoop chatServerListeningLoop;
+    public MockAppFactory setChatServerListeningLoopToReturn(ChatServerListeningLoop chatServerListeningLoop) {
+        this.chatServerListeningLoop = chatServerListeningLoop;
+        return this;
+    }
+    private int callCountForCreateChatServerListeningLoop = 0;
+    public int getCallCountForCreateChatServerListeningLoop() {
+        return callCountForCreateChatServerListeningLoop;
+    }
+
 
     @Override
     public ServerSokket createServerSokketListeningAtPort(int port) {
@@ -102,13 +115,13 @@ public class MockAppFactory implements AppFactory {
     }
 
     @Override
-    public ClientProtocol createWelcome(Writer writer) {
+    public EchoLoopClientWelcome createWelcome(Writer writer, Reader reader) {
         callCountForCreateWelcome += 1;
         return welcomer;
     }
 
     @Override
-    public ClientProtocol createEchoLoop(Reader reader, Writer writer) {
+    public ClientProtocol createEchoLoop(Reader reader, Writer writer, String name) {
         callCountForCreateEchoLoop += 1;
         return echoLoop;
     }
@@ -119,4 +132,9 @@ public class MockAppFactory implements AppFactory {
         return thread;
     }
 
+    @Override
+    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) {
+        callCountForCreateChatServerListeningLoop += 1;
+        return chatServerListeningLoop;
+    }
 }

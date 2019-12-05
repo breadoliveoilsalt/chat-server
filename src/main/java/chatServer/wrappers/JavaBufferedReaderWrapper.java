@@ -1,6 +1,6 @@
-package echoServer.wrappers;
+package chatServer.wrappers;
 
-import echoServer.interfaces.Reader;
+import chatServer.interfaces.Reader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class JavaBufferedReaderWrapper implements Reader {
 
     private final BufferedReader reader;
 
-    JavaBufferedReaderWrapper(InputStream inputStream) {
+    public JavaBufferedReaderWrapper(InputStream inputStream) {
         reader = new BufferedReader(new InputStreamReader(inputStream));
     }
 

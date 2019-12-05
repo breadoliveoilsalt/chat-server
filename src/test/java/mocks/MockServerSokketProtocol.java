@@ -1,8 +1,8 @@
 package mocks;
 
-import echoServer.interfaces.AppFactory;
-import echoServer.interfaces.ServerSokket;
-import echoServer.interfaces.ServerSokketProtocol;
+import chatServer.interfaces.AppFactory;
+import chatServer.interfaces.ServerSokket;
+import chatServer.interfaces.ServerSokketProtocol;
 
 public class MockServerSokketProtocol implements ServerSokketProtocol {
 
@@ -20,7 +20,6 @@ public class MockServerSokketProtocol implements ServerSokketProtocol {
     public int getCallCountForRun() {
         return callCountForRun;
     }
-
 
     @Override
     public void run(ServerSokket serverSokket, AppFactory factory) {

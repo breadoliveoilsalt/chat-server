@@ -1,4 +1,7 @@
-package echoServer.interfaces;
+package chatServer.interfaces;
+
+import chatServer.logic.ChatServerListeningLoop;
+import chatServer.logic.EchoLoopClientWelcome;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,10 +17,12 @@ public interface AppFactory {
 
     Runnable createEchoLoopInit(Sokket connectedSokket, AppFactory factory);
 
-    ClientProtocol createWelcome(Writer writer);
+    EchoLoopClientWelcome createWelcome(Writer writer, Reader reader);
 
-    ClientProtocol createEchoLoop(Reader reader, Writer writer);
+    ClientProtocol createEchoLoop(Reader reader, Writer writer, String name);
 
     Thread createThreadFor(Runnable runnable);
+
+    ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory);
 
 }

@@ -17,7 +17,7 @@ dependencies {
 }
 
 jar {
-    archiveBaseName = "echoServer"
+    archiveBaseName = "chatServer"
     archiveVersion = versionDetails().lastTag + "-" + versionDetails().gitHash
     manifest {
         attributes(

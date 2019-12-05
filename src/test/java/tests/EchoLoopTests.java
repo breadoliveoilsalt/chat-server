@@ -1,6 +1,6 @@
 package tests;
 
-import echoServer.logic.EchoLoop;
+import chatServer.logic.EchoLoop;
 import mocks.MockReader;
 import mocks.MockWriter;
 import org.junit.Before;
@@ -23,14 +23,15 @@ public class EchoLoopTests {
     public void init() {
         reader = new MockReader();
         writer = new MockWriter();
-        echoLoop = new EchoLoop(reader, writer);
+        String clientName = "Joey";
+        echoLoop = new EchoLoop(reader, writer, clientName);
         expectedSentMessages = new ArrayList<>();
     }
 
     @Test
-    public void testRunBeginsALoopThatReadsLineFromClientAndSendsSameMessageBackToClient() throws IOException {
+    public void testRunBeginsALoopThatReadsLineFromClientAndSendsSameMessageBackToClientWithName() throws IOException {
         reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList("Hello!", "exit!")));
-        expectedSentMessages.add("Hello!");
+        expectedSentMessages.add("Joey: Hello!");
 
         assertTrue(writer.getMessagesSentToClient().isEmpty());
         echoLoop.run();
@@ -40,7 +41,7 @@ public class EchoLoopTests {
 
      @Test public void testRunContinuesTheLoopUntilClientSendsExitMessage() throws IOException {
         reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList("Hello!", "How are you?", "Bye!", "exit!")));
-        expectedSentMessages.addAll(Arrays.asList("Hello!", "How are you?", "Bye!"));
+        expectedSentMessages.addAll(Arrays.asList("Joey: Hello!", "Joey: How are you?", "Joey: Bye!"));
 
         echoLoop.run();
 
