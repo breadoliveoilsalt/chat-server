@@ -64,10 +64,10 @@ public class EchoLoopInitTests {
     }
 
     @Test
-    public void testRunWelcomesTheClientByRunningTheClientWelcomeProtocol() {
+    public void testRunCallsGetsTheClientsNameFromTheWelcomeProtocol() {
         echoLoopInit.run();
 
-        assertEquals(1, welcomer.getCallCountForRun());
+        assertEquals(1, welcomer.getCallCountForGetClientName());
     }
 
     @Test
