@@ -1,11 +1,9 @@
 package tests;
 
 import chatServer.logic.ChatServerInit;
-import chatServer.logic.ChatServerListeningLoop;
 import mocks.MockAppFactory;
 import mocks.MockChatServerListeningLoop;
 import mocks.MockServerSokket;
-import mocks.MockServerSokketProtocol;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
