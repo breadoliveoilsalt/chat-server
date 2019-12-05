@@ -21,7 +21,6 @@ public class MockServerSokketProtocol implements ServerSokketProtocol {
         return callCountForRun;
     }
 
-
     @Override
     public void run(ServerSokket serverSokket, AppFactory factory) {
         this.serverSokketArgument = serverSokket;

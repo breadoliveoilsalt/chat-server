@@ -16,7 +16,6 @@ public class EchoLoopTests {
 
     private MockReader reader;
     private MockWriter writer;
-    private String clientName;
     private EchoLoop echoLoop;
     private List<String> expectedSentMessages;
 
@@ -24,7 +23,7 @@ public class EchoLoopTests {
     public void init() {
         reader = new MockReader();
         writer = new MockWriter();
-        clientName = "Joey";
+        String clientName = "Joey";
         echoLoop = new EchoLoop(reader, writer, clientName);
         expectedSentMessages = new ArrayList<>();
     }

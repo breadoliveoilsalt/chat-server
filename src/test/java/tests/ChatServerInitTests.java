@@ -38,7 +38,7 @@ public class ChatServerInitTests {
     }
 
     @Test
-    public void testStartInstantiatesAChatServerListentingLoop() throws IOException {
+    public void testStartInstantiatesAChatServerListeningLoop() throws IOException {
         assertEquals(0, factory.getCallCountForCreateChatServerListeningLoop());
 
         chatServer.start();

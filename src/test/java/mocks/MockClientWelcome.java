@@ -21,13 +21,7 @@ public class MockClientWelcome extends EchoLoopClientWelcome {
     }
 
     private String name = "";
-    public String getName() {
-        return name;
-    }
-    public void setNameToReturn(String name) {
-        this.name = name;
-    }
-
+    
     @Override
     public String getClientName() {
         callCountForGetClientName += 1;

@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public class ChatServerListeningLoop {
 
-    private ServerSokket serverSokket;
-    private AppFactory factory;
+    private final ServerSokket serverSokket;
+    private final AppFactory factory;
     private Sokket connectedSokket;
     private Thread threadToStart;
 
