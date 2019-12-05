@@ -19,7 +19,7 @@ public interface AppFactory {
 
     EchoLoopClientWelcome createWelcome(Writer writer, Reader reader);
 
-    ClientProtocol createEchoLoop(Reader reader, Writer writer);
+    ClientProtocol createEchoLoop(Reader reader, Writer writer, String name);
 
     Thread createThreadFor(Runnable runnable);
 

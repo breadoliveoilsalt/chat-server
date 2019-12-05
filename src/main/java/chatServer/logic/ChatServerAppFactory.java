@@ -29,8 +29,8 @@ public class ChatServerAppFactory implements AppFactory {
        return new EchoLoopClientWelcome(writer, reader);
     }
 
-    public ClientProtocol createEchoLoop(Reader reader, Writer writer) {
-        return new EchoLoop(reader, writer);
+    public ClientProtocol createEchoLoop(Reader reader, Writer writer, String name) {
+        return new EchoLoop(reader, writer, name);
     }
 
     public Thread createThreadFor(Runnable runnable) {

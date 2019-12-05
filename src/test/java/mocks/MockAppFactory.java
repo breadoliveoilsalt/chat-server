@@ -121,7 +121,7 @@ public class MockAppFactory implements AppFactory {
     }
 
     @Override
-    public ClientProtocol createEchoLoop(Reader reader, Writer writer) {
+    public ClientProtocol createEchoLoop(Reader reader, Writer writer, String name) {
         callCountForCreateEchoLoop += 1;
         return echoLoop;
     }

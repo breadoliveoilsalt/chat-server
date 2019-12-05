@@ -51,7 +51,7 @@ public class EchoLoopInit implements Runnable, ClientProtocol {
     }
 
     private void runEchoLoop() throws IOException {
-        ClientProtocol echoLoop = factory.createEchoLoop(reader, writer); // pass name
+        ClientProtocol echoLoop = factory.createEchoLoop(reader, writer, clientName);
         echoLoop.run();
     }
 
