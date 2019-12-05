@@ -3,6 +3,7 @@ package mocks;
 import chatServer.interfaces.*;
 import chatServer.logic.ChatServerListeningLoop;
 import chatServer.logic.EchoLoopClientWelcome;
+import chatServer.models.ChatRoom;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,6 +11,7 @@ import java.io.OutputStream;
 public class MockAppFactory implements AppFactory {
 
     private ServerSokket serverSokket;
+
     public MockAppFactory setServerSokketToReturn(ServerSokket serverSokket) {
         this.serverSokket = serverSokket;
         return this;
@@ -89,6 +91,14 @@ public class MockAppFactory implements AppFactory {
         return callCountForCreateChatServerListeningLoop;
     }
 
+    private int callCountForCreateChatRoom;
+    public int getCallCountForCreateChatRoom() {
+        return callCountForCreateChatRoom;
+    }
+    private ChatRoom chatRoom;
+    public void setChatRoomToReturn(ChatRoom chatRoom) {
+        this.chatRoom = chatRoom;
+    }
 
     @Override
     public ServerSokket createServerSokketListeningAtPort(int port) {
@@ -136,5 +146,12 @@ public class MockAppFactory implements AppFactory {
     public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) {
         callCountForCreateChatServerListeningLoop += 1;
         return chatServerListeningLoop;
+    }
+
+    @Override
+    public ChatRoom createChatRoom(AppFactory factory) {
+        callCountForCreateChatRoom += 1;
+        return chatRoom;
+
     }
 }

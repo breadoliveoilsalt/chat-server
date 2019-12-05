@@ -2,6 +2,7 @@ package chatServer.interfaces;
 
 import chatServer.logic.ChatServerListeningLoop;
 import chatServer.logic.EchoLoopClientWelcome;
+import chatServer.models.ChatRoom;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,4 +26,5 @@ public interface AppFactory {
 
     ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory);
 
+    ChatRoom createChatRoom(AppFactory factory);
 }

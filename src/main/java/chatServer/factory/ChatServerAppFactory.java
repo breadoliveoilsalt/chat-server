@@ -5,6 +5,7 @@ import chatServer.logic.ChatServerListeningLoop;
 import chatServer.logic.EchoLoop;
 import chatServer.logic.EchoLoopClientWelcome;
 import chatServer.logic.EchoLoopInit;
+import chatServer.models.ChatRoom;
 import chatServer.wrappers.*;
 
 import java.io.IOException;
@@ -42,5 +43,9 @@ public class ChatServerAppFactory implements AppFactory {
     }
 
     public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, factory);
+    }
+
+    public ChatRoom createChatRoom(AppFactory factory) {
+        return new ChatRoom(factory);
     }
 }

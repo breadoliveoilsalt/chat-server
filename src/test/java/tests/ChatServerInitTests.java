@@ -38,6 +38,15 @@ public class ChatServerInitTests {
     }
 
     @Test
+    public void testStartInstantiatesAChatRoom() throws IOException {
+        assertEquals(0, factory.getCallCountForCreateChatRoom());
+
+        chatServer.start();
+
+        assertEquals(1, factory.getCallCountForCreateChatRoom());
+    }
+
+    @Test
     public void testStartInstantiatesAChatServerListeningLoop() throws IOException {
         assertEquals(0, factory.getCallCountForCreateChatServerListeningLoop());
 
