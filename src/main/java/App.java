@@ -1,4 +1,4 @@
-import chatServer.logic.ChatServerAppFactory;
+import chatServer.factory.ChatServerAppFactory;
 import chatServer.logic.ChatServerInit;
 
 import java.io.IOException;

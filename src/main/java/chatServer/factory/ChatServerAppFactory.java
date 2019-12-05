@@ -1,6 +1,10 @@
-package chatServer.logic;
+package chatServer.factory;
 
 import chatServer.interfaces.*;
+import chatServer.logic.ChatServerListeningLoop;
+import chatServer.logic.EchoLoop;
+import chatServer.logic.EchoLoopClientWelcome;
+import chatServer.logic.EchoLoopInit;
 import chatServer.wrappers.*;
 
 import java.io.IOException;
