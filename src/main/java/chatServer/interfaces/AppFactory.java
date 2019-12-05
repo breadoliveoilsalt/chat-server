@@ -24,7 +24,9 @@ public interface AppFactory {
 
     Thread createThreadFor(Runnable runnable);
 
-    ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory);
+    ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, ChatRoom chatRoom, AppFactory factory);
 
     ChatRoom createChatRoom(AppFactory factory);
+
+    Runnable createClientInitRunnable(Sokket sokket, ChatRoom chatRoom, AppFactory factory);
 }

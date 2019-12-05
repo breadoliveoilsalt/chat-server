@@ -1,10 +1,7 @@
 package chatServer.factory;
 
 import chatServer.interfaces.*;
-import chatServer.logic.ChatServerListeningLoop;
-import chatServer.logic.EchoLoop;
-import chatServer.logic.EchoLoopClientWelcome;
-import chatServer.logic.EchoLoopInit;
+import chatServer.logic.*;
 import chatServer.models.ChatRoom;
 import chatServer.wrappers.*;
 
@@ -42,10 +39,14 @@ public class ChatServerAppFactory implements AppFactory {
         return new Thread(runnable);
     }
 
-    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, factory);
+    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, ChatRoom chatRoom, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, chatRoom, factory);
     }
 
     public ChatRoom createChatRoom(AppFactory factory) {
         return new ChatRoom(factory);
     }
+
+    public Runnable createClientInitRunnable(Sokket sokket, ChatRoom chatRoom, AppFactory factory) {
+        return new ClientInitRunnable(sokket, chatRoom, factory);
+    };
 }

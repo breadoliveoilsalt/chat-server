@@ -41,8 +41,9 @@ public class ChatServerInit {
     private void instantiateChatRoom() {
         chatRoom = factory.createChatRoom(factory);
     }
+    
     private void instantiateChatServerListeningLoop() {
-        chatServerListeningLoop = factory.createChatServerListeningLoop(serverSokket, factory);
+        chatServerListeningLoop = factory.createChatServerListeningLoop(serverSokket, chatRoom, factory);
     }
 
     private void runChatServerListeningLoop() throws IOException {

@@ -2,6 +2,7 @@ package tests;
 
 import chatServer.logic.ChatServerInit;
 import mocks.MockAppFactory;
+import mocks.MockChatRoom;
 import mocks.MockChatServerListeningLoop;
 import mocks.MockServerSokket;
 import org.junit.Before;
@@ -14,13 +15,15 @@ public class ChatServerInitTests {
 
     private MockChatServerListeningLoop serverListeningLoop;
     private MockServerSokket serverSokket;
+    private MockChatRoom chatRoom;
     private MockAppFactory factory;
     private ChatServerInit chatServer;
 
     @Before
     public void testInit() {
         serverSokket = new MockServerSokket();
-        serverListeningLoop = new MockChatServerListeningLoop(serverSokket, factory);
+        chatRoom = new MockChatRoom(factory);
+        serverListeningLoop = new MockChatServerListeningLoop(serverSokket, chatRoom, factory);
         factory = new MockAppFactory()
             .setServerSokketToReturn(serverSokket)
             .setChatServerListeningLoopToReturn(serverListeningLoop);

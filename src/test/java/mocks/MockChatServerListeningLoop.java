@@ -3,6 +3,7 @@ package mocks;
 import chatServer.interfaces.AppFactory;
 import chatServer.interfaces.ServerSokket;
 import chatServer.logic.ChatServerListeningLoop;
+import chatServer.models.ChatRoom;
 
 public class MockChatServerListeningLoop extends ChatServerListeningLoop {
 
@@ -11,8 +12,8 @@ public class MockChatServerListeningLoop extends ChatServerListeningLoop {
         return callCountForRun;
     }
 
-    public MockChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) {
-        super(serverSokket, factory);
+    public MockChatServerListeningLoop(ServerSokket serverSokket, ChatRoom chatRoom, AppFactory factory) {
+        super(serverSokket, chatRoom, factory);
     }
 
     @Override

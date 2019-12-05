@@ -16,7 +16,9 @@ public class ChatServerListeningLoopTests {
 
     private MockServerSokket serverSokket;
     private MockAppFactory factory;
-    private MockEchoLoopInit echoLoopInit;
+    private MockSokket sokket;
+    private MockChatRoom chatRoom;
+    private MockClientInitRunnable clientInitRunnable;
     private MockThread thread;
     private ChatServerListeningLoop chatServerListeningLoop;
 
@@ -30,21 +32,22 @@ public class ChatServerListeningLoopTests {
 
     private void initServerSokket() {
         int samplePort = 8000;
-        Sokket sokket = new MockSokket(samplePort);
+        sokket = new MockSokket(samplePort);
         serverSokket = new MockServerSokket();
         serverSokket.setMockSokketToReturnFollowingConnection(sokket);
     }
 
     private void initFactory() {
-        echoLoopInit = new MockEchoLoopInit();
-        thread = new MockThread(echoLoopInit);
+        chatRoom = new MockChatRoom(factory);
+        clientInitRunnable = new MockClientInitRunnable(sokket, chatRoom, factory);
+        thread = new MockThread(clientInitRunnable);
         factory = new MockAppFactory()
             .setThreadToReturn(thread)
-            .setEchoLoopInitToReturn(echoLoopInit);
+            .setClientInitRunnableToReturn(clientInitRunnable);
     }
 
     private void initChatServerListeningLoop() {
-        chatServerListeningLoop = new ChatServerListeningLoop(serverSokket, factory);
+        chatServerListeningLoop = new ChatServerListeningLoop(serverSokket, chatRoom, factory);
     }
 
     private void setLoopToRunOnce() {
@@ -62,12 +65,12 @@ public class ChatServerListeningLoopTests {
     }
 
     @ Test
-    public void testRunLoopInstantiatesAThreadedEchoLoop() throws IOException {
+    public void testRunLoopInstantiatesAClientInitThread() throws IOException {
         setLoopToRunOnce();
 
         chatServerListeningLoop.run();
 
-        assertEquals(1, factory.getCallCountForCreateEchoLoopInit());
+        assertEquals(1, factory.getCallCountForCreateClientInitRunnable());
         assertEquals(1, factory.getCallCountForCreateThreadFor());
     }
 
@@ -77,7 +80,7 @@ public class ChatServerListeningLoopTests {
 
         chatServerListeningLoop.run();
 
-        assertEquals(1, echoLoopInit.getRunCallCount());
+        assertEquals(1, clientInitRunnable.getCallCountForRun());
         assertEquals(1, thread.getCallCountForStart());
     }
 
@@ -88,9 +91,9 @@ public class ChatServerListeningLoopTests {
         chatServerListeningLoop.run();
 
         assertEquals(3, serverSokket.getCallCountForAcceptConnectionAndReturnConnectedSokket());
-        assertEquals(3, factory.getCallCountForCreateEchoLoopInit());
+        assertEquals(3, factory.getCallCountForCreateClientInitRunnable());
         assertEquals(3, factory.getCallCountForCreateThreadFor());
-        assertEquals(3, echoLoopInit.getRunCallCount());
+        assertEquals(3, clientInitRunnable.getCallCountForRun());
         assertEquals(3, thread.getCallCountForStart());
 
     }

@@ -10,8 +10,9 @@ import java.io.OutputStream;
 
 public class MockAppFactory implements AppFactory {
 
-    private ServerSokket serverSokket;
 
+
+    private ServerSokket serverSokket;
     public MockAppFactory setServerSokketToReturn(ServerSokket serverSokket) {
         this.serverSokket = serverSokket;
         return this;
@@ -91,14 +92,26 @@ public class MockAppFactory implements AppFactory {
         return callCountForCreateChatServerListeningLoop;
     }
 
+    private ChatRoom chatRoom;
+    public MockAppFactory setChatRoomToReturn(ChatRoom chatRoom) {
+        this.chatRoom = chatRoom;
+        return this;
+    }
     private int callCountForCreateChatRoom;
     public int getCallCountForCreateChatRoom() {
         return callCountForCreateChatRoom;
     }
-    private ChatRoom chatRoom;
-    public void setChatRoomToReturn(ChatRoom chatRoom) {
-        this.chatRoom = chatRoom;
+
+    private Runnable clientInitRunnable;
+    public MockAppFactory setClientInitRunnableToReturn(Runnable clientInitRunnable) {
+        this.clientInitRunnable = clientInitRunnable;
+        return this;
     }
+    private int callCountForCreateClientInitRunnable = 0;
+    public int getCallCountForCreateClientInitRunnable() {
+        return callCountForCreateClientInitRunnable;
+    }
+
 
     @Override
     public ServerSokket createServerSokketListeningAtPort(int port) {
@@ -143,7 +156,7 @@ public class MockAppFactory implements AppFactory {
     }
 
     @Override
-    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) {
+    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, ChatRoom chatRoom, AppFactory factory) {
         callCountForCreateChatServerListeningLoop += 1;
         return chatServerListeningLoop;
     }
@@ -152,6 +165,11 @@ public class MockAppFactory implements AppFactory {
     public ChatRoom createChatRoom(AppFactory factory) {
         callCountForCreateChatRoom += 1;
         return chatRoom;
-
     }
+
+    @Override
+    public Runnable createClientInitRunnable(Sokket sokket, ChatRoom chatRoom, AppFactory factory) {
+        callCountForCreateClientInitRunnable += 1;
+        return clientInitRunnable;
+    };
 }
