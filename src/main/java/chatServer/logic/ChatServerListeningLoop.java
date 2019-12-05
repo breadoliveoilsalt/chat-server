@@ -19,7 +19,7 @@ public class ChatServerListeningLoop {
     public void run() throws IOException {
         while (serverSokket.isBoundToAPort()) {
             getSokketConnectedToClient();
-            initializeThreadedEchoLoop();
+            instantiateThreadedEchoLoop();
             startThread();
         }
     }
@@ -28,7 +28,7 @@ public class ChatServerListeningLoop {
         connectedSokket = serverSokket.acceptConnectionAndReturnConnectedSokket();
     }
 
-    private void initializeThreadedEchoLoop() {
+    private void instantiateThreadedEchoLoop() {
         Runnable echoLoopInit = factory.createEchoLoopInit(connectedSokket, factory);
         threadToStart = factory.createThreadFor(echoLoopInit);
     }
