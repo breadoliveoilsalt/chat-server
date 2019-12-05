@@ -25,8 +25,8 @@ public class ChatServerAppFactory implements AppFactory {
         return new EchoLoopInit(connectedSokket, factory);
     }
 
-    public ClientProtocol createWelcome(Writer writer) {
-       return new EchoLoopClientWelcome(writer);
+    public EchoLoopClientWelcome createWelcome(Writer writer, Reader reader) {
+       return new EchoLoopClientWelcome(writer, reader);
     }
 
     public ClientProtocol createEchoLoop(Reader reader, Writer writer) {

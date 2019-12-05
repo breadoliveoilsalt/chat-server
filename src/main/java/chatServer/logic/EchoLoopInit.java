@@ -10,6 +10,8 @@ public class EchoLoopInit implements Runnable, ClientProtocol {
     private final AppFactory factory;
     private Reader reader;
     private Writer writer;
+    private EchoLoopClientWelcome welcomer;
+    private String clientName;
 
     public EchoLoopInit(Sokket sokket, AppFactory factory) {
         this.sokket = sokket;
@@ -19,7 +21,8 @@ public class EchoLoopInit implements Runnable, ClientProtocol {
     public void run() {
         try {
             initReaderAndWriter();
-            welcomeClient();
+            getClientName();
+            printInstructionsForClient();
             runEchoLoop();
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,9 +41,13 @@ public class EchoLoopInit implements Runnable, ClientProtocol {
         writer = factory.createWriter(sokket.getOutputStream());
     }
 
-    private void welcomeClient() throws IOException {
-        ClientProtocol welcomer = factory.createWelcome(writer); // pass reader too
-        welcomer.run(); // name = welcomer.getClientName
+    private void getClientName() throws IOException {
+        welcomer = factory.createWelcome(writer, reader);
+        clientName = welcomer.getClientName();
+    }
+
+    private void printInstructionsForClient() {
+        welcomer.printInstructions();
     }
 
     private void runEchoLoop() throws IOException {

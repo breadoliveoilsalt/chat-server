@@ -25,7 +25,7 @@ public class EchoLoopInitTests {
     private void initFactory() {
         reader = new MockReader();
         writer = new MockWriter();
-        welcomer = new MockClientWelcome();
+        welcomer = new MockClientWelcome(writer, reader);
         echoLoop = new MockEchoLoop(reader, writer);
         factory = new MockAppFactory()
             .setReaderToReturn(reader)
@@ -57,18 +57,25 @@ public class EchoLoopInitTests {
     }
 
     @Test
-    public void testRunCreatesAnInstanceOfAClientWelcomeProtocol() {
+    public void testRunCreatesAnInstanceOfAClientWelcome() {
         echoLoopInit.run();
 
         assertEquals(1, factory.getCallCountForCreateWelcome() );
     }
 
     @Test
-    public void testRunCallsGetsTheClientsNameFromTheWelcomeProtocol() {
+    public void testRunCallsGetsTheClientsNameFromTheWelcome() {
         echoLoopInit.run();
 
         assertEquals(1, welcomer.getCallCountForGetClientName());
     }
+
+   @Test
+   public void testRunCallsPrintInstructionsOnTheClientWelcome() {
+        echoLoopInit.run();
+
+        assertEquals(1, welcomer.getCallCountForPrintInstructions());
+   }
 
     @Test
     public void testRunInstantiatesAndRunsTheEchoLoop() {

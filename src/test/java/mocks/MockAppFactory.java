@@ -2,6 +2,7 @@ package mocks;
 
 import chatServer.interfaces.*;
 import chatServer.logic.ChatServerListeningLoop;
+import chatServer.logic.EchoLoopClientWelcome;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -58,8 +59,8 @@ public class MockAppFactory implements AppFactory {
         return callCountForCreateWriter;
     }
 
-    private ClientProtocol welcomer;
-    public MockAppFactory setWelcomerToReturn(ClientProtocol welcomer) {
+    private EchoLoopClientWelcome welcomer;
+    public MockAppFactory setWelcomerToReturn(EchoLoopClientWelcome welcomer) {
         this.welcomer = welcomer;
         return this;
     }
@@ -114,7 +115,7 @@ public class MockAppFactory implements AppFactory {
     }
 
     @Override
-    public ClientProtocol createWelcome(Writer writer) {
+    public EchoLoopClientWelcome createWelcome(Writer writer, Reader reader) {
         callCountForCreateWelcome += 1;
         return welcomer;
     }
