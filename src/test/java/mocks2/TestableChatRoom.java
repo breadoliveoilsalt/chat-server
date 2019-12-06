@@ -6,9 +6,9 @@ import chatServer.models.Client;
 
 import java.util.ArrayList;
 
-public class MockChatRoom2 extends ChatRoom {
+public class TestableChatRoom extends ChatRoom {
 
-    public MockChatRoom2(AppFactory factory) {
+    public TestableChatRoom(AppFactory factory) {
         super(factory);
     }
 
