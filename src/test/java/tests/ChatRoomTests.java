@@ -2,21 +2,39 @@ package tests;
 
 import chatServer.interfaces.AppFactory;
 import chatServer.models.ChatRoom;
+import chatServer.models.Client;
 import mocks.MockAppFactory;
 import mocks2.TestableChatRoom;
+import mocks2.TestableClient;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class ChatRoomTests {
 
-    ChatRoom chatRoom;
+    TestableChatRoom chatRoom;
     AppFactory factory;
+    TestableClient client1;
+    TestableClient client2;
+    TestableClient client3;
+
 
     @Before
     public void initTests() {
         factory = new MockAppFactory();
         chatRoom = new TestableChatRoom(factory);
+        addBaseClientsToChatRoom();
+    }
+
+    private void addBaseClientsToChatRoom() {
+        client1 = new TestableClient();
+        client2 = new TestableClient();
+        client3 = new TestableClient();
+        chatRoom.setClients(new ArrayList<Client>(Arrays.asList(client1, client2, client3)));
     }
 
     @Test
@@ -35,7 +53,15 @@ public class ChatRoomTests {
 
     @Test
     public void testAddClientAddsAClientToTheListOfClientsInTheChatRoom() {
-//        assertEquals(exptectedClients, chatRoom.getClients());
+        Client newClient = new TestableClient();
+
+        chatRoom.addClient(newClient);
+
+        ArrayList<Client> chatRoomClientList = chatRoom.getClients();
+
+        Client lastClientAddedToChatRoomList = chatRoomClientList.get(chatRoomClientList.size() - 1);
+
+        assertEquals(newClient, lastClientAddedToChatRoomList);
     }
 
     @Test

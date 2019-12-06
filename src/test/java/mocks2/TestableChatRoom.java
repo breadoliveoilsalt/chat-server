@@ -15,4 +15,8 @@ public class TestableChatRoom extends ChatRoom {
     public ArrayList<Client> getClients() {
         return clients;
     }
+
+    public void setClients(ArrayList<Client> clients) {
+        this.clients = clients;
+    }
 }
