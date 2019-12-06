@@ -1,4 +1,4 @@
-package chatServer.logic;
+package chatServer.models;
 
 import chatServer.interfaces.AppFactory;
 import chatServer.models.Client;
@@ -10,41 +10,41 @@ public class ChatRoom {
 
     private AppFactory factory;
     private Client moderator;
-    private ArrayList<Client> clients = new ArrayList<Client>();
+    protected ArrayList<Client> clients = new ArrayList<Client>();
 
     public ChatRoom(AppFactory factory) {
         this.factory = factory;
-        this.moderator = factory.createModerator();
+//        this.moderator = factory.createModerator();
     }
 
     public synchronized void broadcastToAllClients(Client sendingClient, String message) {
-        for (Client client : clients) {
-            if (client != sendingClient) {
-                client.sendMessage(">> " + sendingClient.getClientName() + ": " + message);
-            } else {
-                client.sendMessage(">> You: " + message);
-            }
-        }
+//        for (Client client : clients) {
+//            if (client != sendingClient) {
+//                client.sendMessage(">> " + sendingClient.getClientName() + ": " + message);
+//            } else {
+//                client.sendMessage(">> You: " + message);
+//            }
+//        }
     }
 
     public synchronized void addClient(Client client) {
         clients.add(client);
-        beginListeningThreadForClient(client);
-        String message = client.getClientName() + " has joined.";
-        broadcastToAllClients(moderator, message);
+//        beginListeningThreadForClient(client);
+//        String message = client.getClientName() + " has joined.";
+//        broadcastToAllClients(moderator, message);
     }
 
     public synchronized void removeClient(Client client) throws IOException {
-        clients.remove(client);
-        client.leave();
-        String message = client.getClientName() + " has left.";
-        broadcastToAllClients(moderator, message);
+//        clients.remove(client);
+//        client.leave();
+//        String message = client.getClientName() + " has left.";
+//        broadcastToAllClients(moderator, message);
     }
 
     private void beginListeningThreadForClient(Client client) {
-        Runnable runnable = factory.createListenForClientRunnable(client, this);
-        Thread thread = factory.createThreadFor(runnable);
-        thread.start();
+//        Runnable runnable = factory.createListenForClientRunnable(client, this);
+//        Thread thread = factory.createThreadFor(runnable);
+//        thread.start();
     }
 
 }
