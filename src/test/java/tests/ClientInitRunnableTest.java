@@ -1,7 +1,9 @@
 package tests;
 
 import chatServer.logic.ClientInitRunnable;
+import chatServer.models.Client;
 import mocks.MockAppFactory;
+import mocks.MockClient;
 import mocks2.MockAppFactory2;
 import mocks.MockSokket;
 import mocks2.MockChatRoom2;
@@ -15,15 +17,16 @@ public class ClientInitRunnableTest {
     private MockSokket sokket;
     private MockChatRoom2 chatRoom;
     private MockAppFactory factory;
+    private Client newClient;
     private ClientInitRunnable clientInitRunnable;
 
     @Before
     public void initTests() {
         sokket = new MockSokket();
-        factory = new MockAppFactory();
+        newClient = new MockClient();
+        factory = new MockAppFactory().setClientToReturn(newClient);
         chatRoom = new MockChatRoom2(factory);
         clientInitRunnable = new ClientInitRunnable(sokket, chatRoom, factory);
-
 
     }
 
@@ -36,13 +39,10 @@ public class ClientInitRunnableTest {
         assertEquals(1, factory.callCountForCreateClient);
     }
 
-//    @Test
-//    public void testRunAddsTheClientToTheChatRoom() {
-//        assertEquals(0, chatRoom.getCallCountForAddClient());
-//
-//        clientInitRunnable.run();
-//
-//        assertEquals(1, chatRoom.getCallCountForAddClient());
-//    }
+    @Test
+    public void testRunAddsTheClientToTheChatRoom() {
+        clientInitRunnable.run();
+        assertEquals(newClient, chatRoom.getClients().get(0));
+    }
 
 }

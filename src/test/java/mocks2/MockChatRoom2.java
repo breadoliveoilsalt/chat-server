@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class MockChatRoom2 extends ChatRoom {
 
-    private ArrayList<Client> clients;
-
     public MockChatRoom2(AppFactory factory) {
         super(factory);
     }

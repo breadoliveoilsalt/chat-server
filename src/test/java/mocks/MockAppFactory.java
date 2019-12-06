@@ -113,8 +113,9 @@ public class MockAppFactory implements AppFactory {
     }
 
     private Client client;
-    public void setClientToReturn(Client client) {
+    public MockAppFactory setClientToReturn(Client client) {
         this.client = client;
+        return this;
     }
     public int callCountForCreateClient = 0;
 //    public int getCallCountForCreateClient() {
