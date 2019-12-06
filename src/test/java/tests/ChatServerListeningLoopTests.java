@@ -1,6 +1,5 @@
 package tests;
 
-import chatServer.interfaces.Sokket;
 import chatServer.logic.ChatServerListeningLoop;
 import mocks.*;
 
@@ -31,8 +30,7 @@ public class ChatServerListeningLoopTests {
     }
 
     private void initServerSokket() {
-        int samplePort = 8000;
-        sokket = new MockSokket(samplePort);
+        sokket = new MockSokket();
         serverSokket = new MockServerSokket();
         serverSokket.setMockSokketToReturnFollowingConnection(sokket);
     }

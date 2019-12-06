@@ -35,8 +35,7 @@ public class EchoLoopInitTests {
     }
 
     private void initEchoLoopInit() {
-        int samplePort = 8000;
-        sokket = new MockSokket(samplePort);
+        sokket = new MockSokket();
         echoLoopInit = new EchoLoopInit(sokket, factory);
     }
 

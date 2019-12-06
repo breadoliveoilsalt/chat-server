@@ -4,13 +4,13 @@ import chatServer.interfaces.*;
 import chatServer.logic.ChatServerListeningLoop;
 import chatServer.logic.EchoLoopClientWelcome;
 import chatServer.models.ChatRoom;
+import chatServer.models.Client;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 public class MockAppFactory implements AppFactory {
-
-
 
     private ServerSokket serverSokket;
     public MockAppFactory setServerSokketToReturn(ServerSokket serverSokket) {
@@ -112,6 +112,14 @@ public class MockAppFactory implements AppFactory {
         return callCountForCreateClientInitRunnable;
     }
 
+    private Client client;
+    public void setClientToReturn(Client client) {
+        this.client = client;
+    }
+    public int callCountForCreateClient = 0;
+//    public int getCallCountForCreateClient() {
+//        return callCountForCreateClient;
+//    }
 
     @Override
     public ServerSokket createServerSokketListeningAtPort(int port) {
@@ -172,4 +180,10 @@ public class MockAppFactory implements AppFactory {
         callCountForCreateClientInitRunnable += 1;
         return clientInitRunnable;
     };
+
+    @Override
+    public Client createClient(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException {
+        callCountForCreateClient += 1;
+        return client;
+    }
 }

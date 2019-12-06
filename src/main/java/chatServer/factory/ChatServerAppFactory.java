@@ -3,6 +3,7 @@ package chatServer.factory;
 import chatServer.interfaces.*;
 import chatServer.logic.*;
 import chatServer.models.ChatRoom;
+import chatServer.models.Client;
 import chatServer.wrappers.*;
 
 import java.io.IOException;
@@ -49,4 +50,8 @@ public class ChatServerAppFactory implements AppFactory {
     public Runnable createClientInitRunnable(Sokket sokket, ChatRoom chatRoom, AppFactory factory) {
         return new ClientInitRunnable(sokket, chatRoom, factory);
     };
+
+    public Client createClient(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException {
+        return new Client(sokket, chatRoom, factory);
+    }
 }

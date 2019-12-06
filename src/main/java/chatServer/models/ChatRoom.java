@@ -14,4 +14,11 @@ public class ChatRoom {
         this.factory = factory;
 //        this.moderator = factory.createModerator();
     }
+
+    public synchronized void addClient(Client client) {
+//        clients.add(client);
+//        beginListeningThreadForClient(client);
+//        String message = client.getClientName() + " has joined.";
+//        broadcastToAllClients(moderator, message);
+    }
 }
