@@ -3,6 +3,7 @@ package tests;
 import chatServer.logic.ChatServerListeningLoop;
 import mocks.*;
 
+import mocks2.TestableThread;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,7 +19,7 @@ public class ChatServerListeningLoopTests {
     private MockSokket sokket;
     private MockChatRoom chatRoom;
     private MockClientInitRunnable clientInitRunnable;
-    private MockThread thread;
+    private TestableThread thread;
     private ChatServerListeningLoop chatServerListeningLoop;
 
     @Before
@@ -38,9 +39,9 @@ public class ChatServerListeningLoopTests {
     private void initFactory() {
         chatRoom = new MockChatRoom(factory);
         clientInitRunnable = new MockClientInitRunnable(sokket, chatRoom, factory);
-        thread = new MockThread(clientInitRunnable);
+        thread = new TestableThread();
         factory = new MockAppFactory()
-            .setThreadToReturn(thread)
+            .setTestableThreadToReturn(thread)
             .setClientInitRunnableToReturn(clientInitRunnable);
     }
 
@@ -79,7 +80,9 @@ public class ChatServerListeningLoopTests {
         chatServerListeningLoop.run();
 
         assertEquals(1, clientInitRunnable.getCallCountForRun());
+        assertEquals(clientInitRunnable, thread.getRunnablePassedToThread());
         assertEquals(1, thread.getCallCountForStart());
+        assertEquals(1, clientInitRunnable.getCallCountForRun());
     }
 
     @Test
@@ -90,9 +93,10 @@ public class ChatServerListeningLoopTests {
 
         assertEquals(3, serverSokket.getCallCountForAcceptConnectionAndReturnConnectedSokket());
         assertEquals(3, factory.getCallCountForCreateClientInitRunnable());
-        assertEquals(3, factory.getCallCountForCreateThreadFor());
+//        assertEquals(3, factory.getCallCountForCreateThreadFor());
         assertEquals(3, clientInitRunnable.getCallCountForRun());
         assertEquals(3, thread.getCallCountForStart());
+        assertEquals(3, clientInitRunnable.getCallCountForRun());
 
     }
 

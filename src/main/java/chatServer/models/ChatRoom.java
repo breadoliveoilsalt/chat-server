@@ -29,7 +29,7 @@ public class ChatRoom {
 
     public synchronized void addClient(Client client) {
         clients.add(client);
-//        beginListeningThreadForClient(client);
+        beginListeningThreadForClient(client);
 //        String message = client.getClientName() + " has joined.";
 //        broadcastToAllClients(moderator, message);
     }
@@ -42,9 +42,9 @@ public class ChatRoom {
     }
 
     private void beginListeningThreadForClient(Client client) {
-//        Runnable runnable = factory.createListenForClientRunnable(client, this);
-//        Thread thread = factory.createThreadFor(runnable);
-//        thread.start();
+        Runnable runnable = factory.createListenForClientMessageRunnable(client, this);
+        Thread thread = factory.createThreadFor(runnable);
+        thread.start();
     }
 
 }

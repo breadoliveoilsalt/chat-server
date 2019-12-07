@@ -5,6 +5,7 @@ import chatServer.logic.ChatServerListeningLoop;
 import chatServer.logic.EchoLoopClientWelcome;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
+import mocks2.TestableThread;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +14,7 @@ import java.io.OutputStream;
 public class MockAppFactory implements AppFactory {
 
     private ServerSokket serverSokket;
+
     public MockAppFactory setServerSokketToReturn(ServerSokket serverSokket) {
         this.serverSokket = serverSokket;
         return this;
@@ -121,6 +123,22 @@ public class MockAppFactory implements AppFactory {
 //    public int getCallCountForCreateClient() {
 //        return callCountForCreateClient;
 //    }
+    private Runnable listenForClientMessageRunnableToReturn;
+    public MockAppFactory setListenForClientMessageRunnableToReturn(Runnable listenForClientMessageRunnableToReturn) {
+        this.listenForClientMessageRunnableToReturn = listenForClientMessageRunnableToReturn;
+        return this;
+    }
+    private int callCountForListenForClientMessageRunnable = 0;
+    public int getCallCountForListenForClientMessageRunnable() {
+        return callCountForListenForClientMessageRunnable;
+    }
+
+    private TestableThread testableThreadToReturn;
+
+    public MockAppFactory setTestableThreadToReturn(TestableThread testableThreadToReturn) {
+        this.testableThreadToReturn = testableThreadToReturn;
+        return this;
+    }
 
     @Override
     public ServerSokket createServerSokketListeningAtPort(int port) {
@@ -161,7 +179,8 @@ public class MockAppFactory implements AppFactory {
     @Override
     public Thread createThreadFor(Runnable runnable) {
         callCountForCreateThreadFor += 1;
-        return thread;
+        return testableThreadToReturn.establishWithRunnable(runnable);
+//        return new MockThread(runnable);
     }
 
     @Override
@@ -187,4 +206,10 @@ public class MockAppFactory implements AppFactory {
         callCountForCreateClient += 1;
         return client;
     }
+
+    @Override
+    public Runnable createListenForClientMessageRunnable(Client client, ChatRoom chatRoom) {
+        callCountForListenForClientMessageRunnable += 1;
+        return listenForClientMessageRunnableToReturn;
+    };
 }

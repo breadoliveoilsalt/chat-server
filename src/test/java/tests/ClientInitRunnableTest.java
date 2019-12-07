@@ -3,6 +3,7 @@ package tests;
 import chatServer.logic.ClientInitRunnable;
 import chatServer.models.Client;
 import mocks.MockAppFactory;
+import mocks.MockChatRoom;
 import mocks.MockClient;
 import mocks.MockSokket;
 import mocks2.TestableChatRoom;
@@ -14,7 +15,7 @@ import org.junit.Test;
 public class ClientInitRunnableTest {
 
     private MockSokket sokket;
-    private TestableChatRoom chatRoom;
+    private MockChatRoom chatRoom;
     private MockAppFactory factory;
     private Client newClient;
     private ClientInitRunnable clientInitRunnable;
@@ -23,10 +24,9 @@ public class ClientInitRunnableTest {
     public void initTests() {
         sokket = new MockSokket();
         newClient = new MockClient();
-        factory = new MockAppFactory().setClientToReturn(newClient);
-        chatRoom = new TestableChatRoom(factory);
+        chatRoom = new MockChatRoom(factory);
+        factory = new MockAppFactory().setClientToReturn(newClient).setChatRoomToReturn(chatRoom);
         clientInitRunnable = new ClientInitRunnable(sokket, chatRoom, factory);
-
     }
 
     @Test
@@ -41,7 +41,7 @@ public class ClientInitRunnableTest {
     @Test
     public void testRunAddsTheClientToTheChatRoom() {
         clientInitRunnable.run();
-        assertEquals(newClient, chatRoom.getClients().get(0));
+        assertEquals(newClient, chatRoom.getLastClientAdded());
     }
 
 }

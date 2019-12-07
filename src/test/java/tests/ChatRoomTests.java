@@ -1,11 +1,15 @@
 package tests;
 
 import chatServer.interfaces.AppFactory;
+import chatServer.logic.ListenForClientMessageRunnable;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 import mocks.MockAppFactory;
+import mocks.MockListenForClientMessageRunnable;
+import mocks.MockThread;
 import mocks2.TestableChatRoom;
 import mocks2.TestableClient;
+import mocks2.TestableThread;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,15 +21,25 @@ import static org.junit.Assert.*;
 public class ChatRoomTests {
 
     TestableChatRoom chatRoom;
-    AppFactory factory;
+
+    MockAppFactory factory;
+    Thread thread;
     TestableClient client1;
     TestableClient client2;
     TestableClient client3;
+    TestableClient newClient;
+    MockListenForClientMessageRunnable listeningRunnable;
+    TestableThread testableThread;
 
 
     @Before
     public void initTests() {
+        newClient = new TestableClient();
+        listeningRunnable = new MockListenForClientMessageRunnable(newClient, chatRoom);
+        testableThread = new TestableThread();
+
         factory = new MockAppFactory();
+        factory.setListenForClientMessageRunnableToReturn(listeningRunnable).setTestableThreadToReturn(testableThread);
         chatRoom = new TestableChatRoom(factory);
         addBaseClientsToChatRoom();
     }
@@ -53,7 +67,6 @@ public class ChatRoomTests {
 
     @Test
     public void testAddClientAddsAClientToTheListOfClientsInTheChatRoom() {
-        Client newClient = new TestableClient();
 
         chatRoom.addClient(newClient);
 
@@ -66,10 +79,12 @@ public class ChatRoomTests {
 
     @Test
     public void testAddClientBeginsAThreadListeningForAClientMessage() {
-//        assertEquals(1, factory.callCountForCreateListenClientRunnable);
-//        assertEquals(1, factory.callCountForCreateThread);
-//        assertEquals(clientRunnable, thread.runnable);
-//        assertEquals(1, thread.callCountForStart);
+        chatRoom.addClient(newClient);
+//        assertEquals(1, factory.getCallCountForListenForClientMessageRunnable());
+//        assertEquals(1, factory.getCallCountForCreateThreadFor());
+        assertEquals(listeningRunnable, testableThread.getRunnablePassedToThread());
+        assertEquals(1, testableThread.getCallCountForStart());
+        assertEquals(1, listeningRunnable.getCallCountForRun());
     }
 
     @Test
