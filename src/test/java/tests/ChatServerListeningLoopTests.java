@@ -93,7 +93,6 @@ public class ChatServerListeningLoopTests {
 
         assertEquals(3, serverSokket.getCallCountForAcceptConnectionAndReturnConnectedSokket());
         assertEquals(3, factory.getCallCountForCreateClientInitRunnable());
-//        assertEquals(3, factory.getCallCountForCreateThreadFor());
         assertEquals(3, clientInitRunnable.getCallCountForRun());
         assertEquals(3, thread.getCallCountForStart());
         assertEquals(3, clientInitRunnable.getCallCountForRun());

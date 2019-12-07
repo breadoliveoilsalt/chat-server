@@ -13,6 +13,7 @@ import mocks2.TestableThread;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -80,19 +81,19 @@ public class ChatRoomTests {
     @Test
     public void testAddClientBeginsAThreadListeningForAClientMessage() {
         chatRoom.addClient(newClient);
-//        assertEquals(1, factory.getCallCountForListenForClientMessageRunnable());
-//        assertEquals(1, factory.getCallCountForCreateThreadFor());
         assertEquals(listeningRunnable, testableThread.getRunnablePassedToThread());
         assertEquals(1, testableThread.getCallCountForStart());
         assertEquals(1, listeningRunnable.getCallCountForRun());
     }
 
     @Test
-    public void testRemoveClientRemovesAClientFromTheListOfClientsInTheChatRoom() {
-        // add clients
-        // set expected clients
-        // call remove on client
-        // assert on list of expected clients.
+    public void testRemoveClientRemovesAClientFromTheListOfClientsInTheChatRoom() throws IOException {
+        chatRoom.addClient(newClient);
+        ArrayList<Client> expectedClients = new ArrayList<Client>(Arrays.asList(client1, client2, client3));
+
+        chatRoom.removeClient(newClient);
+
+        assertEquals(expectedClients, chatRoom.getClients());
     }
 
     @Test
