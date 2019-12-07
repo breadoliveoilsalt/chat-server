@@ -8,6 +8,7 @@ public class MockClient extends Client {
 
     public int callCountForLeave = 0;
     public ArrayList<String> sentMessages = new ArrayList<String>();
+    public String clientName;
 
     @Override
     public void leave() {
@@ -18,4 +19,10 @@ public class MockClient extends Client {
     public void sendMessage(String string) {
         sentMessages.add(string);
     }
+
+    @Override
+    public String getClientName() {
+        return clientName;
+    }
+
 }

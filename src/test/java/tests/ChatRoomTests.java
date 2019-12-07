@@ -55,9 +55,14 @@ public class ChatRoomTests {
 
     @Test
     public void testBroadcastToAllClientsSendsAMessageWithTheSendingClientNameToAllClientsExceptTheSendingClient() {
-        // add clients
-        // add clients
-        // chatRoom.broadcastToAllClients(sendingClient, message);
+        client1.clientName = "Tom";
+        // ANOTHER EXAMPLE OF USING PUBLIC FIELD ABOVE;
+        chatRoom.broadcastToAllClients(client1, "Hi.");
+        chatRoom.broadcastToAllClients(client1, "How are you?");
+        ArrayList<String> exepectedMessages = new ArrayList<String>(Arrays.asList(">> Tom: Hi.", ">> Tom: How are you?"));
+
+        assertEquals(exepectedMessages, client2.sentMessages);
+        assertEquals(exepectedMessages, client3.sentMessages);
         // expected message = sendingclient's name with message);
         // assertEquals
         // Testable client needs to have a messages received and then we get the last message received.

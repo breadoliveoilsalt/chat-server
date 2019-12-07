@@ -18,13 +18,13 @@ public class ChatRoom {
     }
 
     public synchronized void broadcastToAllClients(Client sendingClient, String message) {
-//        for (Client client : clients) {
-//            if (client != sendingClient) {
-//                client.sendMessage(">> " + sendingClient.getClientName() + ": " + message);
-//            } else {
-//                client.sendMessage(">> You: " + message);
-//            }
-//        }
+        for (Client client : clients) {
+            if (client != sendingClient) {
+                client.sendMessage(">> " + sendingClient.getClientName() + ": " + message);
+            } else {
+                client.sendMessage(">> You: " + message);
+            }
+        }
     }
 
     public synchronized void addClient(Client client) {
