@@ -36,7 +36,7 @@ public class ChatRoom {
 
     public synchronized void removeClient(Client client) throws IOException {
         clients.remove(client);
-//        client.leave();
+        client.leave();
 //        String message = client.getClientName() + " has left.";
 //        broadcastToAllClients(moderator, message);
     }

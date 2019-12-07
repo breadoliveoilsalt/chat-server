@@ -5,6 +5,7 @@ import chatServer.logic.ListenForClientMessageRunnable;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 import mocks.MockAppFactory;
+import mocks.MockClient;
 import mocks.MockListenForClientMessageRunnable;
 import mocks.MockThread;
 import mocks2.TestableChatRoom;
@@ -25,17 +26,17 @@ public class ChatRoomTests {
 
     MockAppFactory factory;
     Thread thread;
-    TestableClient client1;
-    TestableClient client2;
-    TestableClient client3;
-    TestableClient newClient;
+    MockClient client1;
+    MockClient client2;
+    MockClient client3;
+    MockClient newClient;
     MockListenForClientMessageRunnable listeningRunnable;
     TestableThread testableThread;
 
 
     @Before
     public void initTests() {
-        newClient = new TestableClient();
+        newClient = new MockClient();
         listeningRunnable = new MockListenForClientMessageRunnable(newClient, chatRoom);
         testableThread = new TestableThread();
 
@@ -46,14 +47,15 @@ public class ChatRoomTests {
     }
 
     private void addBaseClientsToChatRoom() {
-        client1 = new TestableClient();
-        client2 = new TestableClient();
-        client3 = new TestableClient();
+        client1 = new MockClient();
+        client2 = new MockClient();
+        client3 = new MockClient();
         chatRoom.setClients(new ArrayList<Client>(Arrays.asList(client1, client2, client3)));
     }
 
     @Test
     public void testBroadcastToAllClientsSendsAMessageWithTheSendingClientNameToAllClientsExceptTheSendingClient() {
+        // add clients
         // add clients
         // chatRoom.broadcastToAllClients(sendingClient, message);
         // expected message = sendingclient's name with message);
@@ -97,9 +99,12 @@ public class ChatRoomTests {
     }
 
     @Test
-    public void testRemoveClientTellsTheClientToLeave() {
-        // add clients
-        // call remove on client
-//        assertEquals(1, removedClient.callCountForLeave);
+    public void testRemoveClientTellsTheClientToLeave() throws IOException {
+        chatRoom.addClient(newClient);
+
+        chatRoom.removeClient(newClient);
+
+        assertEquals(1, newClient.callCountForLeave);
+        // NOTE RELIES ON PUBLIC METHOD ABOVE!
     }
 }
