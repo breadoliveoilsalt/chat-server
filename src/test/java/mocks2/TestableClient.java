@@ -30,7 +30,10 @@ public class TestableClient extends Client {
         writerToClient.printLine(">> Welcome to the Chat Room, " + clientName + "!");
     }
 
-    public void leave() throws IOException {
-        sokket.close();
+//    public void leave() throws IOException {
+//        sokket.close();
+//    }
+    public String getName() {
+        return clientName;
     }
 }

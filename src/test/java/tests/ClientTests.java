@@ -2,6 +2,7 @@ package tests;
 
 import chatServer.models.Client;
 import mocks.*;
+import mocks2.TestableClient;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class ClientTests {
     MockAppFactory factory;
     MockWriter writer;
     MockReader reader;
-    Client client;
+    TestableClient client;
 
     @Before
     public void testInit() throws IOException {
@@ -28,12 +29,15 @@ public class ClientTests {
         factory = new MockAppFactory()
                 .setWriterToReturn(writer)
                 .setReaderToReturn(reader);
-        client = new Client(sokket, chatRoom, factory);
+        client = new TestableClient(sokket, chatRoom, factory);
     }
 
     @Test
-    public void testNewClientWithArgumentsInstantiatesAReaderAndWriterForClient() {
+    public void testNewClientWithArgumentsInstantiatesAReaderAndWriterForClient() throws IOException {
+        reader.setMockMessagesToReceiveFromClient(new ArrayList<String>(Arrays.asList("Tom")));
+        client = new TestableClient(sokket, chatRoom, factory);
 
+        assertEquals("Tom", client.getName());
     }
 
     @Test
