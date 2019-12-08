@@ -11,8 +11,15 @@ public class MockChatRoom extends ChatRoom {
     private ArrayList<Client> clients = new ArrayList<Client>();
     private int callCountForAddClient = 0;
 
+    public ArrayList<String> messagesSentToAllClients = new ArrayList<String>();
+
     public MockChatRoom(AppFactory factory) {
         super(factory);
+    }
+
+    @Override
+    public void broadcastToAllClients(Client client, String message) {
+        messagesSentToAllClients.add(message);
     }
 
     @Override

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class MockClient extends Client {
 
     public int callCountForLeave = 0;
-    public ArrayList<String> sentMessages = new ArrayList<String>();
+    public ArrayList<String> messagesSentToClient = new ArrayList<String>();
+    public ArrayList<String> messagesFromClient = new ArrayList<String>();
     public String clientName;
 
     @Override
@@ -17,12 +18,17 @@ public class MockClient extends Client {
 
     @Override
     public void sendMessage(String string) {
-        sentMessages.add(string);
+        messagesSentToClient.add(string);
     }
 
     @Override
     public String getClientName() {
         return clientName;
+    }
+
+    @Override
+    public String getMessage() {
+        return messagesFromClient.remove(0);
     }
 
 }

@@ -1,15 +1,10 @@
 package tests;
 
-import chatServer.interfaces.AppFactory;
-import chatServer.logic.ListenForClientMessageRunnable;
-import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 import mocks.MockAppFactory;
 import mocks.MockClient;
 import mocks.MockListenForClientMessageRunnable;
-import mocks.MockThread;
 import mocks2.TestableChatRoom;
-import mocks2.TestableClient;
 import mocks2.TestableThread;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,8 +57,8 @@ public class ChatRoomTests {
         chatRoom.broadcastToAllClients(client1, "Hi.");
         chatRoom.broadcastToAllClients(client1, "How are you?");
 
-        assertEquals(exepectedMessages, client2.sentMessages);
-        assertEquals(exepectedMessages, client3.sentMessages);
+        assertEquals(exepectedMessages, client2.messagesSentToClient);
+        assertEquals(exepectedMessages, client3.messagesSentToClient);
     }
 
     @Test
@@ -74,7 +69,7 @@ public class ChatRoomTests {
         chatRoom.broadcastToAllClients(client1, "Hi.");
         chatRoom.broadcastToAllClients(client1, "How are you?");
 
-        assertEquals(exepectedMessages, client1.sentMessages);
+        assertEquals(exepectedMessages, client1.messagesSentToClient);
     }
 
 
