@@ -33,7 +33,7 @@ public class ListenForClientMessageRunnableTests {
     }
 
     @Test
-    public void testRunBeginsALoopThatReadsLineFromClientAndSendsSameMessageBackToClientWithName() throws IOException {
+    public void testRunBeginsALoopThatGetsMessageFromClientAndTellsChatRoomToBroadcastItToAllClients() throws IOException {
         client.messagesFromClient = new ArrayList<>(Arrays.asList("Hello!", "exit!"));
         expectedSentMessages.add("Hello!");
 
@@ -42,14 +42,14 @@ public class ListenForClientMessageRunnableTests {
         assertEquals(expectedSentMessages, chatRoom.messagesSentToAllClients);
     }
 
-//     @Test public void testRunContinuesTheLoopUntilClientSendsExitMessage() throws IOException {
-//        reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList("Hello!", "How are you?", "Bye!", "exit!")));
-//        expectedSentMessages.addAll(Arrays.asList("Joey: Hello!", "Joey: How are you?", "Joey: Bye!"));
-//
-//        echoLoop.run();
-//
-//        assertEquals(expectedSentMessages, writer.getMessagesSentToClient());
-//     }
+     @Test public void testRunContinuesTheLoopUntilClientSendsExitMessage() throws IOException {
+        client.messagesFromClient = new ArrayList<>(Arrays.asList("Hello!", "How are you?", "Bye!", "exit!"));
+        expectedSentMessages.addAll(Arrays.asList("Hello!", "How are you?", "Bye!"));
+
+        listenForClientMessageRunnable.run();
+
+        assertEquals(expectedSentMessages, chatRoom.messagesSentToAllClients);
+     }
 //
 //     @Test public void testRunStopsAsSoonAsClientSendsExitMessage() throws IOException {
 //         reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList("exit!", "Hello!", "How are you?")));
