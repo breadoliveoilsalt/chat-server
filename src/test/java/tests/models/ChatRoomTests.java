@@ -1,11 +1,11 @@
-package tests;
+package tests.models;
 
 import chatServer.models.Client;
-import mocks.MockAppFactory;
+import factoryForTests.MockAppFactory;
 import mocks.MockClient;
 import mocks.MockListenForClientMessageRunnable;
-import mocks2.TestableChatRoom;
-import mocks2.TestableThread;
+import testableObjects.TestableChatRoom;
+import testableObjects.TestableThread;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,16 +18,15 @@ import static org.junit.Assert.*;
 
 public class ChatRoomTests {
 
-    TestableChatRoom chatRoom;
+    private TestableChatRoom chatRoom;
 
-    MockAppFactory factory;
-    Thread thread;
-    MockClient client1;
-    MockClient client2;
-    MockClient client3;
-    MockClient newClient;
-    MockListenForClientMessageRunnable listeningRunnable;
-    TestableThread testableThread;
+    private MockAppFactory factory;
+    private MockClient client1;
+    private MockClient client2;
+    private MockClient client3;
+    private MockClient newClient;
+    private MockListenForClientMessageRunnable listeningRunnable;
+    private TestableThread testableThread;
 
 
     @Before

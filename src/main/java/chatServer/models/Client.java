@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Client {
 
-    protected Sokket sokket;
+    private Sokket sokket;
     protected String clientName;
     protected String getClientName() {
         return clientName;
@@ -18,7 +18,7 @@ public class Client {
     protected Writer writerToClient;
     protected Reader readerFromClient;
 
-    public Client () {};
+    protected Client () {}
 
     public Client(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException {
         this.sokket = sokket;

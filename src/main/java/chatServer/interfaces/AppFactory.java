@@ -1,7 +1,7 @@
 package chatServer.interfaces;
 
 import chatServer.logic.ChatServerListeningLoop;
-import chatServer.logic.EchoLoopClientWelcome;
+import chatServer.logic.ChatServerClientWelcome;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 
@@ -16,12 +16,6 @@ public interface AppFactory {
     Reader createReader(InputStream inputStream);
 
     Writer createWriter(OutputStream outputStream);
-
-    Runnable createEchoLoopInit(Sokket connectedSokket, AppFactory factory);
-
-    EchoLoopClientWelcome createWelcome(Writer writer, Reader reader);
-
-    ClientProtocol createEchoLoop(Reader reader, Writer writer, String name);
 
     Thread createThreadFor(Runnable runnable);
 

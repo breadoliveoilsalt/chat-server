@@ -5,12 +5,12 @@ import chatServer.interfaces.Writer;
 
 import java.io.IOException;
 
-public class EchoLoopClientWelcome {
+public class ChatServerClientWelcome {
 
     private final Writer writer;
     private final Reader reader;
 
-    public EchoLoopClientWelcome(Writer writer, Reader reader) {
+    public ChatServerClientWelcome(Writer writer, Reader reader) {
         this.writer = writer;
         this.reader = reader;
     }

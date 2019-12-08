@@ -24,18 +24,6 @@ public class ChatServerAppFactory implements AppFactory {
         return new JavaPrintWriterWrapper(outputStream);
     }
 
-    public Runnable createEchoLoopInit(Sokket connectedSokket, chatServer.interfaces.AppFactory factory) {
-        return new EchoLoopInit(connectedSokket, factory);
-    }
-
-    public EchoLoopClientWelcome createWelcome(Writer writer, Reader reader) {
-       return new EchoLoopClientWelcome(writer, reader);
-    }
-
-    public ClientProtocol createEchoLoop(Reader reader, Writer writer, String name) {
-        return new EchoLoop(reader, writer, name);
-    }
-
     public Thread createThreadFor(Runnable runnable) {
         return new Thread(runnable);
     }

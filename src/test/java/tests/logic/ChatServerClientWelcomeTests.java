@@ -1,6 +1,6 @@
-package tests;
+package tests.logic;
 
-import chatServer.logic.EchoLoopClientWelcome;
+import chatServer.logic.ChatServerClientWelcome;
 import mocks.MockReader;
 import mocks.MockWriter;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EchoLoopClientWelcomeTests {
+public class ChatServerClientWelcomeTests {
 
     @Test
     public void testGetClientNameReturnsTheResultFromReadingALineFromTheReader() throws IOException {
@@ -20,7 +20,7 @@ public class EchoLoopClientWelcomeTests {
 
         String expectedReturnValue = "Joey";
 
-        EchoLoopClientWelcome welcomer = new EchoLoopClientWelcome(writer, reader);
+        ChatServerClientWelcome welcomer = new ChatServerClientWelcome(writer, reader);
 
         assertEquals(expectedReturnValue, welcomer.getClientName());
     }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class MockChatRoom extends ChatRoom {
 
     private ArrayList<Client> clients = new ArrayList<Client>();
-    private int callCountForAddClient = 0;
 
     public ArrayList<String> messagesSentToAllClients = new ArrayList<String>();
 
@@ -24,7 +23,6 @@ public class MockChatRoom extends ChatRoom {
 
     @Override
     public void addClient(Client client) {
-        callCountForAddClient += 1;
         clients.add(client);
     }
 

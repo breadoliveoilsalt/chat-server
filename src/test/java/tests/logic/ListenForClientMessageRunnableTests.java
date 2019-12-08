@@ -1,6 +1,7 @@
-package tests;
+package tests.logic;
 
 import chatServer.logic.ListenForClientMessageRunnable;
+import factoryForTests.MockAppFactory;
 import mocks.*;
 import org.junit.Before;
 import org.junit.Test;

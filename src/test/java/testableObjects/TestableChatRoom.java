@@ -1,4 +1,4 @@
-package mocks2;
+package testableObjects;
 
 import chatServer.interfaces.AppFactory;
 import chatServer.models.ChatRoom;

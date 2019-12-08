@@ -1,7 +1,7 @@
-package tests;
+package tests.logic;
 
 import chatServer.logic.ChatServerInit;
-import mocks.MockAppFactory;
+import factoryForTests.MockAppFactory;
 import mocks.MockChatRoom;
 import mocks.MockChatServerListeningLoop;
 import mocks.MockServerSokket;

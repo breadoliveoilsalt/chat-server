@@ -1,9 +1,10 @@
-package tests;
+package tests.logic;
 
 import chatServer.logic.ChatServerListeningLoop;
+import factoryForTests.MockAppFactory;
 import mocks.*;
 
-import mocks2.TestableThread;
+import testableObjects.TestableThread;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

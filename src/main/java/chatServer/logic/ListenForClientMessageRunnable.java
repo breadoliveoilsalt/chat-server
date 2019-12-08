@@ -14,7 +14,7 @@ public class ListenForClientMessageRunnable implements Runnable {
     public ListenForClientMessageRunnable(Client client, ChatRoom chatRoom) {
         this.client = client;
         this.chatRoom = chatRoom;
-    };
+    }
 
     public void run() {
         try {

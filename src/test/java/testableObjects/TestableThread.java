@@ -1,4 +1,4 @@
-package mocks2;
+package testableObjects;
 
 public class TestableThread extends Thread {
 
@@ -7,13 +7,12 @@ public class TestableThread extends Thread {
         return callCountForStart;
     }
 
-
     private Runnable runnablePassedToThread;
     public Runnable getRunnablePassedToThread() {
         return runnablePassedToThread;
     }
 
-    public TestableThread() {};
+    public TestableThread() {}
     public TestableThread(Runnable runnable) {
         this.runnablePassedToThread = runnable;
     }
