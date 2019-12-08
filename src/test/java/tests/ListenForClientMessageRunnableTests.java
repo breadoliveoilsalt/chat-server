@@ -50,12 +50,12 @@ public class ListenForClientMessageRunnableTests {
 
         assertEquals(expectedSentMessages, chatRoom.messagesSentToAllClients);
      }
-//
-//     @Test public void testRunStopsAsSoonAsClientSendsExitMessage() throws IOException {
-//         reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList("exit!", "Hello!", "How are you?")));
-//
-//         echoLoop.run();
-//
-//         assertTrue((writer.getMessagesSentToClient()).isEmpty());
-//     }
+
+     @Test public void testRunStopsAsSoonAsClientSendsExitMessage() throws IOException {
+         client.messagesFromClient = new ArrayList<>(Arrays.asList("exit!", "Hello!", "How are you?"));
+
+         listenForClientMessageRunnable.run();
+
+         assertTrue(chatRoom.messagesSentToAllClients.isEmpty());
+     }
 }
