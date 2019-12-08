@@ -9,14 +9,14 @@ import java.io.IOException;
 
 public class Client {
 
-    private Sokket sokket;
-    private String clientName;
-    public String getClientName() {
+    protected Sokket sokket;
+    protected String clientName;
+    protected String getClientName() {
         return clientName;
     }
 
-    private Writer writerToClient;
-    private Reader readerFromClient;
+    protected Writer writerToClient;
+    protected Reader readerFromClient;
 
     public Client () {};
 

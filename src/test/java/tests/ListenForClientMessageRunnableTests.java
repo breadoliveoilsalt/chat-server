@@ -1,6 +1,5 @@
 package tests;
 
-import chatServer.logic.EchoLoop;
 import chatServer.logic.ListenForClientMessageRunnable;
 import mocks.*;
 import org.junit.Before;
@@ -14,9 +13,6 @@ import java.util.List;
 
 public class ListenForClientMessageRunnableTests {
 
-//    private MockReader reader;
-//    private MockWriter writer;
-//    private EchoLoop echoLoop;
     private MockClient client;
     private MockChatRoom chatRoom;
     private MockAppFactory factory;

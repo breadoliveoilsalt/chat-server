@@ -22,10 +22,6 @@ public class MockSokket implements Sokket {
         return closed;
     }
 
-//    public MockSokket(int port) {
-//
-//    }
-
     @Override
     public InputStream getInputStream() {
         gotInputStream = true;

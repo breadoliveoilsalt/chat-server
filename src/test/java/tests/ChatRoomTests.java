@@ -6,12 +6,13 @@ import mocks.MockClient;
 import mocks.MockListenForClientMessageRunnable;
 import mocks2.TestableChatRoom;
 import mocks2.TestableThread;
+
 import org.junit.Before;
 import org.junit.Test;
+import java.util.Arrays;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
