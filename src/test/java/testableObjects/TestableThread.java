@@ -13,9 +13,6 @@ public class TestableThread extends Thread {
     }
 
     public TestableThread() {}
-    public TestableThread(Runnable runnable) {
-        this.runnablePassedToThread = runnable;
-    }
 
     @Override
     public void start() {

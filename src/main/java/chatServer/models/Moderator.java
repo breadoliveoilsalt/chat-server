@@ -2,7 +2,7 @@ package chatServer.models;
 
 public class Moderator extends Client {
 
-    private String clientName;
+    private final String clientName;
 
     @Override
     public String getClientName() {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ChatRoom {
 
-    private AppFactory factory;
+    private final AppFactory factory;
     private Client moderator;
     protected ArrayList<Client> clients = new ArrayList<>();
 

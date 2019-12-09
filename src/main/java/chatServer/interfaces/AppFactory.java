@@ -24,7 +24,7 @@ public interface AppFactory {
 
     Runnable createClientInitRunnable(Sokket sokket, ChatRoom chatRoom, AppFactory factory);
 
-    Client createClient(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException;
+    Client createClient(Sokket sokket, AppFactory factory) throws IOException;
 
     Runnable createListenForClientMessageRunnable(Client client, ChatRoom chatRoom);
 }

@@ -130,7 +130,7 @@ public class MockAppFactory implements AppFactory {
     }
 
     @Override
-    public Client createClient(Sokket sokket, ChatRoom chatRoom, AppFactory factory) {
+    public Client createClient(Sokket sokket, AppFactory factory) {
         callCountForCreateClient += 1;
         return client;
     }

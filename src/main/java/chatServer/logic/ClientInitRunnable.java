@@ -29,7 +29,7 @@ public class ClientInitRunnable implements Runnable {
     }
 
     private void instantiateNewClient() throws IOException {
-        newClient = factory.createClient(sokket, chatRoom, factory);
+        newClient = factory.createClient(sokket, factory);
     }
 
     private void addClientToChatRoom() {

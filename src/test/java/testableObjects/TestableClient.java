@@ -4,14 +4,13 @@ import chatServer.interfaces.AppFactory;
 import chatServer.interfaces.Reader;
 import chatServer.interfaces.Sokket;
 import chatServer.interfaces.Writer;
-import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 
 import java.io.IOException;
 
 public class TestableClient extends Client {
 
-    public TestableClient(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException {
+    public TestableClient(Sokket sokket, AppFactory factory) throws IOException {
         super(sokket, factory);
     }
 

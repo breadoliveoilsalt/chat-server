@@ -14,7 +14,6 @@ import static org.junit.Assert.*;
 public class ClientTests {
 
     private MockSokket sokket;
-    private MockChatRoom chatRoom;
     private MockAppFactory factory;
     private MockWriter writer;
     private MockReader reader;
@@ -25,11 +24,11 @@ public class ClientTests {
         sokket = new MockSokket();
         writer = new MockWriter();
         reader = new MockReader();
-        reader.setMockMessagesToReceiveFromClient(new ArrayList<String>(Arrays.asList("Random Name")));
+        reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList("Random Name")));
         factory = new MockAppFactory()
                 .setWriterToReturn(writer)
                 .setReaderToReturn(reader);
-        client = new TestableClient(sokket, chatRoom, factory);
+        client = new TestableClient(sokket, factory);
     }
 
     @Test
@@ -40,8 +39,8 @@ public class ClientTests {
 
     @Test
     public void testNewClientWithArgumentsSetsTheClientNameThroughReadingALineFromTheReader() throws IOException {
-        reader.setMockMessagesToReceiveFromClient(new ArrayList<String>(Arrays.asList("Tom")));
-        client = new TestableClient(sokket, chatRoom, factory);
+        reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList("Tom")));
+        client = new TestableClient(sokket, factory);
 
         assertEquals("Tom", client.getName());
     }
@@ -57,7 +56,7 @@ public class ClientTests {
     @Test
     public void testGetMessageReadsALineFromTheReader() throws IOException {
         String expectedResult = "Hello!";
-        reader.setMockMessagesToReceiveFromClient(new ArrayList<String>(Arrays.asList(expectedResult)));
+        reader.setMockMessagesToReceiveFromClient(new ArrayList<>(Arrays.asList(expectedResult)));
 
         String actualResult = client.getMessage();
 

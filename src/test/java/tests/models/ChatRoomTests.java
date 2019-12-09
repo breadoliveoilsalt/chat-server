@@ -45,14 +45,14 @@ public class ChatRoomTests {
         client1 = new MockClient();
         client2 = new MockClient();
         client3 = new MockClient();
-        chatRoom.setClients(new ArrayList<Client>(Arrays.asList(client1, client2, client3)));
+        chatRoom.setClients(new ArrayList<>(Arrays.asList(client1, client2, client3)));
     }
 
     @Test
     public void testBroadcastToAllClientsSendsAMessageWithTheSendingClientNameToAllClientsExceptTheSendingClient() {
         client1.clientName = "Tom";
         // ANOTHER EXAMPLE OF USING PUBLIC FIELD ABOVE;
-        ArrayList<String> expectedMessages = new ArrayList<String>(Arrays.asList(">> Tom: Hi.", ">> Tom: How are you?"));
+        ArrayList<String> expectedMessages = new ArrayList<>(Arrays.asList(">> Tom: Hi.", ">> Tom: How are you?"));
 
         chatRoom.broadcastToAllClients(client1, "Hi.");
         chatRoom.broadcastToAllClients(client1, "How are you?");
@@ -64,7 +64,7 @@ public class ChatRoomTests {
     @Test
     public void testBroadcastToAllClientsSendsAMessageWithAYouPromptToTheSendingClient() {
         client1.clientName = "Tom";
-        ArrayList<String> exepectedMessages = new ArrayList<String>(Arrays.asList(">> You: Hi.", ">> You: How are you?"));
+        ArrayList<String> exepectedMessages = new ArrayList<>(Arrays.asList(">> You: Hi.", ">> You: How are you?"));
 
         chatRoom.broadcastToAllClients(client1, "Hi.");
         chatRoom.broadcastToAllClients(client1, "How are you?");
@@ -96,7 +96,7 @@ public class ChatRoomTests {
     @Test
     public void testRemoveClientRemovesAClientFromTheListOfClientsInTheChatRoom() throws IOException {
         chatRoom.addClient(newClient);
-        ArrayList<Client> expectedClients = new ArrayList<Client>(Arrays.asList(client1, client2, client3));
+        ArrayList<Client> expectedClients = new ArrayList<>(Arrays.asList(client1, client2, client3));
 
         chatRoom.removeClient(newClient);
 

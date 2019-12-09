@@ -18,9 +18,4 @@ public class MockWriter implements Writer {
         messagesSentToClient.add(message);
     }
 
-    @Override
-    public void close() {
-
-    }
-
 }

@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class ListenForClientMessageRunnable implements Runnable {
 
-    private Client client;
-    private ChatRoom chatRoom;
+    private final Client client;
+    private final ChatRoom chatRoom;
     private String messageFromClient;
 
     public ListenForClientMessageRunnable(Client client, ChatRoom chatRoom) {

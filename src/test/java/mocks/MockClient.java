@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class MockClient extends Client {
 
     public int callCountForLeave = 0;
-    public ArrayList<String> messagesSentToClient = new ArrayList<String>();
-    public ArrayList<String> messagesFromClient = new ArrayList<String>();
+    public ArrayList<String> messagesSentToClient = new ArrayList<>();
+    public ArrayList<String> messagesFromClient = new ArrayList<>();
     public String clientName;
 
     @Override

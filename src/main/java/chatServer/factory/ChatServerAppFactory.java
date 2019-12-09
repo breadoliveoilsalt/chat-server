@@ -39,7 +39,7 @@ public class ChatServerAppFactory implements AppFactory {
         return new ClientInitRunnable(sokket, chatRoom, factory);
     }
 
-    public Client createClient(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException {
+    public Client createClient(Sokket sokket, AppFactory factory) throws IOException {
         return new Client(sokket, factory);
     }
 

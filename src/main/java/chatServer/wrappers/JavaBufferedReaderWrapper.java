@@ -20,9 +20,4 @@ public class JavaBufferedReaderWrapper implements Reader {
         return reader.readLine();
     }
 
-    @Override
-    public void close() throws IOException {
-        reader.close();
-    }
-
 }

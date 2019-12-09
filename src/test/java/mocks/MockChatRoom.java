@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class MockChatRoom extends ChatRoom {
 
-    private ArrayList<Client> clients = new ArrayList<Client>();
+    private ArrayList<Client> clients = new ArrayList<>();
 
-    public ArrayList<String> messagesSentToAllClients = new ArrayList<String>();
+    public ArrayList<String> messagesSentToAllClients = new ArrayList<>();
 
     public MockChatRoom(AppFactory factory) {
         super(factory);
