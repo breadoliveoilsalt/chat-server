@@ -10,7 +10,7 @@ public class ChatRoom {
 
     private AppFactory factory;
     private Client moderator;
-    protected ArrayList<Client> clients = new ArrayList<Client>();
+    protected ArrayList<Client> clients = new ArrayList<>();
 
     public ChatRoom(AppFactory factory) {
         this.factory = factory;

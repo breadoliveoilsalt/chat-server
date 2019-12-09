@@ -12,7 +12,7 @@ import java.io.IOException;
 public class TestableClient extends Client {
 
     public TestableClient(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException {
-        super(sokket, chatRoom, factory);
+        super(sokket, factory);
     }
 
     public String getName() {

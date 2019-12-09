@@ -20,7 +20,7 @@ public class Client {
 
     protected Client () {}
 
-    public Client(Sokket sokket, ChatRoom chatRoom, AppFactory factory) throws IOException {
+    public Client(Sokket sokket, AppFactory factory) throws IOException {
         this.sokket = sokket;
         this.writerToClient = factory.createWriter(sokket.getOutputStream());
         this.readerFromClient = factory.createReader(sokket.getInputStream());
