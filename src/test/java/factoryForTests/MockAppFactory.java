@@ -16,11 +16,7 @@ public class MockAppFactory implements AppFactory {
         this.serverSokket = serverSokket;
         return this;
     }
-    private int callCountForCreateServerSokket = 0;
-    public int getCallCountForCreateServerSokket() {
-        return callCountForCreateServerSokket;
-    }
-
+    public int callCountForCreateServerSokket = 0;
 
     private Reader reader;
     public MockAppFactory setReaderToReturn(Reader reader) {
@@ -39,37 +35,27 @@ public class MockAppFactory implements AppFactory {
         this.chatServerListeningLoop = chatServerListeningLoop;
         return this;
     }
-    private int callCountForCreateChatServerListeningLoop = 0;
-    public int getCallCountForCreateChatServerListeningLoop() {
-        return callCountForCreateChatServerListeningLoop;
-    }
+    public int callCountForCreateChatServerListeningLoop = 0;
 
     private ChatRoom chatRoom;
     public MockAppFactory setChatRoomToReturn(ChatRoom chatRoom) {
         this.chatRoom = chatRoom;
         return this;
     }
-    private int callCountForCreateChatRoom;
-    public int getCallCountForCreateChatRoom() {
-        return callCountForCreateChatRoom;
-    }
+    public int callCountForCreateChatRoom = 0;
 
     private Runnable clientInitRunnable;
     public MockAppFactory setClientInitRunnableToReturn(Runnable clientInitRunnable) {
         this.clientInitRunnable = clientInitRunnable;
         return this;
     }
-    private int callCountForCreateClientInitRunnable = 0;
-    public int getCallCountForCreateClientInitRunnable() {
-        return callCountForCreateClientInitRunnable;
-    }
+    public int callCountForCreateClientInitRunnable = 0;
 
     private Client client;
     public MockAppFactory setClientToReturn(Client client) {
         this.client = client;
         return this;
     }
-
     public int callCountForCreateClient = 0;
 
     private Runnable listenForClientMessageRunnableToReturn;
@@ -78,12 +64,9 @@ public class MockAppFactory implements AppFactory {
         return this;
     }
 
-    private TestableThread testableThreadToReturn;
-    private int callCountForCreateThreadFor = 0;
-    public int getCallCountForCreateThreadFor() {
-        return callCountForCreateThreadFor;
-    }
+    public int callCountForCreateThreadFor = 0;
 
+    private TestableThread testableThreadToReturn;
     public MockAppFactory setTestableThreadToReturn(TestableThread testableThreadToReturn) {
         this.testableThreadToReturn = testableThreadToReturn;
         return this;

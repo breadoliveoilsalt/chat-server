@@ -70,8 +70,8 @@ public class ChatServerListeningLoopTests {
 
         chatServerListeningLoop.run();
 
-        assertEquals(1, factory.getCallCountForCreateClientInitRunnable());
-        assertEquals(1, factory.getCallCountForCreateThreadFor());
+        assertEquals(1, factory.callCountForCreateClientInitRunnable);
+        assertEquals(1, factory.callCountForCreateThreadFor);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class ChatServerListeningLoopTests {
         chatServerListeningLoop.run();
 
         assertEquals(3, serverSokket.getCallCountForAcceptConnectionAndReturnConnectedSokket());
-        assertEquals(3, factory.getCallCountForCreateClientInitRunnable());
+        assertEquals(3, factory.callCountForCreateClientInitRunnable);
         assertEquals(3, clientInitRunnable.getCallCountForRun());
         assertEquals(3, thread.getCallCountForStart());
         assertEquals(3, clientInitRunnable.getCallCountForRun());

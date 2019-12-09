@@ -33,29 +33,29 @@ public class ChatServerInitTests {
 
     @Test
     public void testStartInstantiatesAListeningServerSokket() throws IOException {
-        assertEquals(0, factory.getCallCountForCreateServerSokket());
+        assertEquals(0, factory.callCountForCreateServerSokket);
 
         chatServer.start();
 
-        assertEquals(1, factory.getCallCountForCreateServerSokket());
+        assertEquals(1, factory.callCountForCreateServerSokket);
     }
 
     @Test
     public void testStartInstantiatesAChatRoom() throws IOException {
-        assertEquals(0, factory.getCallCountForCreateChatRoom());
+        assertEquals(0, factory.callCountForCreateChatRoom);
 
         chatServer.start();
 
-        assertEquals(1, factory.getCallCountForCreateChatRoom());
+        assertEquals(1, factory.callCountForCreateChatRoom);
     }
 
     @Test
     public void testStartInstantiatesAChatServerListeningLoop() throws IOException {
-        assertEquals(0, factory.getCallCountForCreateChatServerListeningLoop());
+        assertEquals(0, factory.callCountForCreateChatServerListeningLoop);
 
         chatServer.start();
 
-        assertEquals(1, factory.getCallCountForCreateChatServerListeningLoop());
+        assertEquals(1, factory.callCountForCreateChatServerListeningLoop);
 
     }
     @Test
