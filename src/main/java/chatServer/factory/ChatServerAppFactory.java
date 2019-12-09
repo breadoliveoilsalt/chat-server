@@ -1,10 +1,9 @@
 package chatServer.factory;
 
 import chatServer.interfaces.*;
-import chatServer.logic.ChatServerListeningLoop;
-import chatServer.logic.EchoLoop;
-import chatServer.logic.EchoLoopClientWelcome;
-import chatServer.logic.EchoLoopInit;
+import chatServer.logic.*;
+import chatServer.models.ChatRoom;
+import chatServer.models.Client;
 import chatServer.wrappers.*;
 
 import java.io.IOException;
@@ -25,22 +24,28 @@ public class ChatServerAppFactory implements AppFactory {
         return new JavaPrintWriterWrapper(outputStream);
     }
 
-    public Runnable createEchoLoopInit(Sokket connectedSokket, chatServer.interfaces.AppFactory factory) {
-        return new EchoLoopInit(connectedSokket, factory);
-    }
-
-    public EchoLoopClientWelcome createWelcome(Writer writer, Reader reader) {
-       return new EchoLoopClientWelcome(writer, reader);
-    }
-
-    public ClientProtocol createEchoLoop(Reader reader, Writer writer, String name) {
-        return new EchoLoop(reader, writer, name);
-    }
-
     public Thread createThreadFor(Runnable runnable) {
         return new Thread(runnable);
     }
 
-    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, factory);
+    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, ChatRoom chatRoom, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, chatRoom, factory);
     }
+
+    public ChatRoom createChatRoom(AppFactory factory) {
+        return new ChatRoom(factory);
+    }
+
+    public Runnable createClientInitRunnable(Sokket sokket, ChatRoom chatRoom, AppFactory factory) {
+        return new ClientInitRunnable(sokket, chatRoom, factory);
+    }
+
+    public Client createClient(Sokket sokket, AppFactory factory) throws IOException {
+        return new Client(sokket, factory);
+    }
+
+    public Runnable createListenForClientMessageRunnable(Client client, ChatRoom chatRoom) {
+        return new ListenForClientMessageRunnable(client, chatRoom);
+    }
+
+
 }

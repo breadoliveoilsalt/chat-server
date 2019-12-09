@@ -1,7 +1,8 @@
-package tests;
+package tests.logic;
 
 import chatServer.logic.ChatServerInit;
-import mocks.MockAppFactory;
+import factoryForTests.MockAppFactory;
+import mocks.MockChatRoom;
 import mocks.MockChatServerListeningLoop;
 import mocks.MockServerSokket;
 import org.junit.Before;
@@ -14,13 +15,15 @@ public class ChatServerInitTests {
 
     private MockChatServerListeningLoop serverListeningLoop;
     private MockServerSokket serverSokket;
+    private MockChatRoom chatRoom;
     private MockAppFactory factory;
     private ChatServerInit chatServer;
 
     @Before
     public void testInit() {
         serverSokket = new MockServerSokket();
-        serverListeningLoop = new MockChatServerListeningLoop(serverSokket, factory);
+        chatRoom = new MockChatRoom(factory);
+        serverListeningLoop = new MockChatServerListeningLoop(serverSokket, chatRoom, factory);
         factory = new MockAppFactory()
             .setServerSokketToReturn(serverSokket)
             .setChatServerListeningLoopToReturn(serverListeningLoop);
@@ -30,20 +33,29 @@ public class ChatServerInitTests {
 
     @Test
     public void testStartInstantiatesAListeningServerSokket() throws IOException {
-        assertEquals(0, factory.getCallCountForCreateServerSokket());
+        assertEquals(0, factory.callCountForCreateServerSokket);
 
         chatServer.start();
 
-        assertEquals(1, factory.getCallCountForCreateServerSokket());
+        assertEquals(1, factory.callCountForCreateServerSokket);
+    }
+
+    @Test
+    public void testStartInstantiatesAChatRoom() throws IOException {
+        assertEquals(0, factory.callCountForCreateChatRoom);
+
+        chatServer.start();
+
+        assertEquals(1, factory.callCountForCreateChatRoom);
     }
 
     @Test
     public void testStartInstantiatesAChatServerListeningLoop() throws IOException {
-        assertEquals(0, factory.getCallCountForCreateChatServerListeningLoop());
+        assertEquals(0, factory.callCountForCreateChatServerListeningLoop);
 
         chatServer.start();
 
-        assertEquals(1, factory.getCallCountForCreateChatServerListeningLoop());
+        assertEquals(1, factory.callCountForCreateChatServerListeningLoop);
 
     }
     @Test

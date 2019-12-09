@@ -12,19 +12,10 @@ public class MockReader implements Reader {
         this.mockMessagesFromClient = mockMessagesToReceiveFromClient;
     }
 
-    private boolean closed = false;
-    public boolean isClosed() {
-        return closed;
-    }
-
     @Override
     public String readLine() {
         return mockMessagesFromClient.remove(0);
     }
 
-    @Override
-    public void close() {
-        closed = true;
-    }
 
 }

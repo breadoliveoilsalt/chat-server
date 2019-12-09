@@ -2,14 +2,16 @@ package chatServer.logic;
 
 import chatServer.interfaces.AppFactory;
 import chatServer.interfaces.ServerSokket;
+import chatServer.models.ChatRoom;
 
 import java.io.IOException;
 
 public class ChatServerInit {
 
     private final int port;
-    private ChatServerListeningLoop serverListeningLoop;
+    private ChatServerListeningLoop chatServerListeningLoop;
     private final AppFactory factory;
+    private ChatRoom chatRoom;
     private ServerSokket serverSokket;
 
     public ChatServerInit(int port, AppFactory factory) {
@@ -21,8 +23,9 @@ public class ChatServerInit {
 
         try {
             instantiateServerSokket();
-            instantiateServerListeningLoop();
-            runServerListeningLoop();
+            instantiateChatRoom();
+            instantiateChatServerListeningLoop();
+            runChatServerListeningLoop();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -35,12 +38,16 @@ public class ChatServerInit {
         serverSokket = factory.createServerSokketListeningAtPort(port);
     }
 
-    private void instantiateServerListeningLoop() {
-        serverListeningLoop = factory.createChatServerListeningLoop(serverSokket, factory);
+    private void instantiateChatRoom() {
+        chatRoom = factory.createChatRoom(factory);
+    }
+    
+    private void instantiateChatServerListeningLoop() {
+        chatServerListeningLoop = factory.createChatServerListeningLoop(serverSokket, chatRoom, factory);
     }
 
-    private void runServerListeningLoop() throws IOException {
-        serverListeningLoop.run();
+    private void runChatServerListeningLoop() throws IOException {
+        chatServerListeningLoop.run();
     }
 
     private void closeServerSokket() throws IOException {

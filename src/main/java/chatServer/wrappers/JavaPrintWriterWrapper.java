@@ -18,9 +18,4 @@ public class JavaPrintWriterWrapper implements Writer {
         writer.println(message);
     }
 
-    @Override
-    public void close() {
-        writer.close();
-    }
-
 }
