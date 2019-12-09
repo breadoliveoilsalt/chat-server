@@ -51,7 +51,6 @@ public class ChatRoomTests {
     @Test
     public void testBroadcastToAllClientsSendsAMessageWithTheSendingClientNameToAllClientsExceptTheSendingClient() {
         client1.clientName = "Tom";
-        // ANOTHER EXAMPLE OF USING PUBLIC FIELD ABOVE;
         ArrayList<String> expectedMessages = new ArrayList<>(Arrays.asList(">> Tom: Hi.", ">> Tom: How are you?"));
 
         chatRoom.broadcastToAllClients(client1, "Hi.");
@@ -110,6 +109,5 @@ public class ChatRoomTests {
         chatRoom.removeClient(newClient);
 
         assertEquals(1, newClient.callCountForLeave);
-        // NOTE RELIES ON PUBLIC METHOD ABOVE!
     }
 }
