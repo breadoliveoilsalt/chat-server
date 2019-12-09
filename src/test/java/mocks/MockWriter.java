@@ -8,13 +8,9 @@ import java.util.List;
 public class MockWriter implements Writer {
 
     private final List<String> messagesSentToClient = new ArrayList<>();
-    public List getMessagesSentToClient() {
-        return messagesSentToClient;
-    }
 
-    private boolean closed = false;
-    public boolean isClosed() {
-        return closed;
+    public String getLastMessageSentToClient() {
+        return messagesSentToClient.get(messagesSentToClient.size() - 1);
     }
 
     @Override
@@ -24,7 +20,7 @@ public class MockWriter implements Writer {
 
     @Override
     public void close() {
-        closed = true;
+
     }
 
 }

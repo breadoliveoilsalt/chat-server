@@ -48,8 +48,11 @@ public class ClientTests {
 
     @Test
     public void testSendMessagePrintsToTheWriter() {
-        assertTrue(true);
+        client.sendMessage("Hi, there.");
+
+        assertEquals("Hi, there.", writer.getLastMessageSentToClient());
     }
+
 
     @Test
     public void testGetMessageReadsALineFromTheReader() throws IOException {
