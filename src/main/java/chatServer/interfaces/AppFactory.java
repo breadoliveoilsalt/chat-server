@@ -1,7 +1,6 @@
 package chatServer.interfaces;
 
 import chatServer.logic.ChatServerListeningLoop;
-import chatServer.logic.ChatServerClientWelcome;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 

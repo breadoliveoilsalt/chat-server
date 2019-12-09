@@ -33,7 +33,7 @@ public class ClientTests {
     }
 
     @Test
-    public void testNewClientWithArgumentsInstantiatesAReaderAndWriterForClient() throws IOException {
+    public void testNewClientWithArgumentsInstantiatesAReaderAndWriterForClient() {
         assertEquals(writer, client.getWriter());
         assertEquals(reader, client.getReader());
     }

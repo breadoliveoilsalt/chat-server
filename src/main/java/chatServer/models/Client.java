@@ -36,9 +36,11 @@ public class Client {
     }
 
     private void askForClientName() throws IOException {
-        writerToClient.printLine(">> What is your name?");
+        writerToClient.printLine("\n>> What is your name?\n");
         clientName = readerFromClient.readLine();
-        writerToClient.printLine(">> Welcome to the Chat Room, " + clientName + "!");
+        writerToClient.printLine(
+            "\n>> Welcome to the Chat Room, " + clientName + "!\n" +
+            "\n>> Type 'exit!' and hit return to disconnect.  \n");
     }
 
     public void leave() throws IOException {

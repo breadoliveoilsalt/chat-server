@@ -2,7 +2,7 @@ package testableObjects;
 
 public class TestableThread extends Thread {
 
-    int callCountForStart = 0;
+    private int callCountForStart = 0;
     public int getCallCountForStart() {
         return callCountForStart;
     }
