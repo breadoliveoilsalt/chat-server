@@ -1,6 +1,5 @@
 package chatServer.factory;
 
-import chatServer.interfaces.*;
 import chatServer.logic.*;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;

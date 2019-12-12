@@ -1,7 +1,7 @@
 package mocks;
 
-import chatServer.interfaces.AppFactory;
-import chatServer.interfaces.Sokket;
+import chatServer.factory.AppFactory;
+import chatServer.wrappers.Sokket;
 import chatServer.logic.ClientInitRunnable;
 import chatServer.models.ChatRoom;
 

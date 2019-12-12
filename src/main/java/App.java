@@ -1,5 +1,5 @@
 import chatServer.factory.ChatServerAppFactory;
-import chatServer.interfaces.AppFactory;
+import chatServer.factory.AppFactory;
 import chatServer.logic.ChatServerInit;
 
 import java.io.IOException;

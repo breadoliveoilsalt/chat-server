@@ -1,9 +1,13 @@
 package factoryForTests;
 
-import chatServer.interfaces.*;
+import chatServer.factory.AppFactory;
 import chatServer.logic.ChatServerListeningLoop;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
+import chatServer.wrappers.Reader;
+import chatServer.wrappers.ServerSokket;
+import chatServer.wrappers.Sokket;
+import chatServer.wrappers.Writer;
 import testableObjects.TestableThread;
 
 import java.io.InputStream;

@@ -1,7 +1,7 @@
 package mocks;
 
-import chatServer.interfaces.ServerSokket;
-import chatServer.interfaces.Sokket;
+import chatServer.wrappers.ServerSokket;
+import chatServer.wrappers.Sokket;
 
 import java.util.ArrayList;
 import java.util.List;

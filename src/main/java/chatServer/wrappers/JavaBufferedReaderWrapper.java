@@ -1,7 +1,5 @@
 package chatServer.wrappers;
 
-import chatServer.interfaces.Reader;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

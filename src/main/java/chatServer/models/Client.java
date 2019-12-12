@@ -1,9 +1,9 @@
 package chatServer.models;
 
-import chatServer.interfaces.AppFactory;
-import chatServer.interfaces.Reader;
-import chatServer.interfaces.Sokket;
-import chatServer.interfaces.Writer;
+import chatServer.factory.AppFactory;
+import chatServer.wrappers.Reader;
+import chatServer.wrappers.Sokket;
+import chatServer.wrappers.Writer;
 
 import java.io.IOException;
 

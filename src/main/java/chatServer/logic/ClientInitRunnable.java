@@ -1,7 +1,7 @@
 package chatServer.logic;
 
-import chatServer.interfaces.AppFactory;
-import chatServer.interfaces.Sokket;
+import chatServer.factory.AppFactory;
+import chatServer.wrappers.Sokket;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 
