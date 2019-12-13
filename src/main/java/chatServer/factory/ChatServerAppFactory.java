@@ -1,8 +1,7 @@
 package chatServer.factory;
 
 import chatServer.logic.*;
-import chatServer.models.ChatRoom;
-import chatServer.models.Client;
+import chatServer.models.*;
 import chatServer.wrappers.*;
 
 import java.io.IOException;
