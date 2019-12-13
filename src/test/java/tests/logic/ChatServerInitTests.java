@@ -35,7 +35,7 @@ public class ChatServerInitTests {
     public void testStartInstantiatesAListeningServerSokket() throws IOException {
         assertEquals(0, factory.callCountForCreateServerSokket);
 
-        chatServer.start();
+        chatServer.run();
 
         assertEquals(1, factory.callCountForCreateServerSokket);
     }
@@ -44,7 +44,7 @@ public class ChatServerInitTests {
     public void testStartInstantiatesAChatRoom() throws IOException {
         assertEquals(0, factory.callCountForCreateChatRoom);
 
-        chatServer.start();
+        chatServer.run();
 
         assertEquals(1, factory.callCountForCreateChatRoom);
     }
@@ -53,7 +53,7 @@ public class ChatServerInitTests {
     public void testStartInstantiatesAChatServerListeningLoop() throws IOException {
         assertEquals(0, factory.callCountForCreateChatServerListeningLoop);
 
-        chatServer.start();
+        chatServer.run();
 
         assertEquals(1, factory.callCountForCreateChatServerListeningLoop);
 
@@ -62,14 +62,14 @@ public class ChatServerInitTests {
     public void testStartRunsTheChatServerListeningLoop() throws IOException {
         assertEquals(0, serverListeningLoop.getCallCountForRun());
 
-        chatServer.start();
+        chatServer.run();
 
         assertEquals(1, serverListeningLoop.getCallCountForRun());
     }
 
     @Test
     public void testStartClosesTheServerSokketAfterTheServerListeningLoopHasBeenRun() throws IOException {
-        chatServer.start();
+        chatServer.run();
 
         assertEquals(1, serverListeningLoop.getCallCountForRun());
         assertTrue(serverSokket.isClosed());

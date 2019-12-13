@@ -7,7 +7,7 @@ import chatServer.wrappers.Sokket;
 
 import java.io.IOException;
 
-public class ChatServerListeningLoop {
+public class ChatServerListeningLoop implements ChatServerLogicObject {
 
     private final ServerSokket serverSokket;
     private final ChatRoom chatRoom;

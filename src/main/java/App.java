@@ -10,7 +10,7 @@ class App {
         int port = 8000;
         AppFactory factory = new ChatServerAppFactory();
 
-        new ChatServerInit(port, factory).start();
+        new ChatServerInit(port, factory).run();
     }
 
 }

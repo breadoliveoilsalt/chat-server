@@ -6,10 +6,10 @@ import chatServer.models.ChatRoom;
 
 import java.io.IOException;
 
-public class ChatServerInit {
+public class ChatServerInit implements ChatServerLogicObject {
 
     private final int port;
-    private ChatServerListeningLoop chatServerListeningLoop;
+    private ChatServerLogicObject chatServerListeningLoop;
     private final AppFactory factory;
     private ChatRoom chatRoom;
     private ServerSokket serverSokket;
@@ -19,7 +19,7 @@ public class ChatServerInit {
         this.factory = factory;
     }
 
-    public void start() throws IOException {
+    public void run() throws IOException {
 
         try {
             instantiateServerSokket();

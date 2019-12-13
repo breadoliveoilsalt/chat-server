@@ -1,6 +1,7 @@
 package chatServer.models;
 
 import chatServer.factory.AppFactory;
+import chatServer.logic.ChatServerLogicObject;
 
 import java.io.IOException;
 import java.util.ArrayList;

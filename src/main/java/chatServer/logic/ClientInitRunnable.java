@@ -6,7 +6,7 @@ import chatServer.models.*;
 
 import java.io.IOException;
 
-public class ClientInitRunnable implements Runnable {
+public class ClientInitRunnable implements Runnable, ChatServerLogicObject {
 
     private final Sokket sokket;
     private final ChatRoom chatRoom;
