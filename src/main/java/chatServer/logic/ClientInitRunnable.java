@@ -1,13 +1,12 @@
 package chatServer.logic;
 
-import chatServer.interfaces.AppFactory;
-import chatServer.interfaces.Sokket;
-import chatServer.models.ChatRoom;
-import chatServer.models.Client;
+import chatServer.factory.AppFactory;
+import chatServer.wrappers.Sokket;
+import chatServer.models.*;
 
 import java.io.IOException;
 
-public class ClientInitRunnable implements Runnable {
+public class ClientInitRunnable implements Runnable, ChatServerLogicObject {
 
     private final Sokket sokket;
     private final ChatRoom chatRoom;

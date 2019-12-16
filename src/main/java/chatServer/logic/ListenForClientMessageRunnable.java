@@ -1,11 +1,10 @@
 package chatServer.logic;
 
-import chatServer.models.ChatRoom;
-import chatServer.models.Client;
+import chatServer.models.*;
 
 import java.io.IOException;
 
-public class ListenForClientMessageRunnable implements Runnable {
+public class ListenForClientMessageRunnable implements Runnable, ChatServerLogicObject {
 
     private final Client client;
     private final ChatRoom chatRoom;

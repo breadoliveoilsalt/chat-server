@@ -1,7 +1,5 @@
 package chatServer.wrappers;
 
-import chatServer.interfaces.Sokket;
-
 import java.io.*;
 import java.net.Socket;
 

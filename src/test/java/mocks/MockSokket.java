@@ -1,6 +1,6 @@
 package mocks;
 
-import chatServer.interfaces.Sokket;
+import chatServer.wrappers.Sokket;
 
 import java.io.InputStream;
 import java.io.OutputStream;

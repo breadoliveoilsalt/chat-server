@@ -1,7 +1,5 @@
 package chatServer.wrappers;
 
-import chatServer.interfaces.Writer;
-
 import java.io.OutputStream;
 import java.io.PrintWriter;
 

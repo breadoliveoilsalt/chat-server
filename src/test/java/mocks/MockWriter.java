@@ -1,6 +1,6 @@
 package mocks;
 
-import chatServer.interfaces.Writer;
+import chatServer.wrappers.Writer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package testableObjects;
 
-import chatServer.interfaces.AppFactory;
+import chatServer.factory.AppFactory;
 import chatServer.models.ChatRoom;
 import chatServer.models.Client;
 

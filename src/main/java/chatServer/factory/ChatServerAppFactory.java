@@ -1,9 +1,7 @@
 package chatServer.factory;
 
-import chatServer.interfaces.*;
 import chatServer.logic.*;
-import chatServer.models.ChatRoom;
-import chatServer.models.Client;
+import chatServer.models.*;
 import chatServer.wrappers.*;
 
 import java.io.IOException;
@@ -28,7 +26,7 @@ public class ChatServerAppFactory implements AppFactory {
         return new Thread(runnable);
     }
 
-    public ChatServerListeningLoop createChatServerListeningLoop(ServerSokket serverSokket, ChatRoom chatRoom, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, chatRoom, factory);
+    public ChatServerLogicObject createChatServerListeningLoop(ServerSokket serverSokket, ChatRoom chatRoom, AppFactory factory) { return new ChatServerListeningLoop(serverSokket, chatRoom, factory);
     }
 
     public ChatRoom createChatRoom(AppFactory factory) {

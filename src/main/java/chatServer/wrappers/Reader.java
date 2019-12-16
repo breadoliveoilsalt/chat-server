@@ -1,4 +1,4 @@
-package chatServer.interfaces;
+package chatServer.wrappers;
 
 import java.io.IOException;
 
